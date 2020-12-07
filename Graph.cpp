@@ -6,15 +6,26 @@ class Graph {
         std::unordered_map<int, float>* connectionGraph; // connections and strength between people
         int numNodes;
 
-    Graph(int requestedNumNodes, int avgDegree) {
+    Graph(int requestedNumNodes, float p) {
         numNodes = requestedNumNodes;
-        initialize_connection_graph(avgDegree);
+        initialize_connection_graph(p);
     }
 
-    void initialize_connection_graph(int avgDegree) {
+    // Use random graph algorithm: each edge is decided with probability p
+    // Considered Babarasi-Albert model to satisfy Power Law (https://en.wikipedia.org/wiki/Scale-free_network), but end up choosing
+    // random graph for simplicity and uniform degree
+    void initialize_connection_graph(float p) {
         std::unordered_map<int, float> connectionGraph[numNodes];
-
-        // TODO: initialize the graph with wanted properties
+        
+        for (int firstNode = 0; firstNode < numNodes; firstNode++) {
+            for (int secondNode = firstNode + 1; secondNode < numNodes; secondNode++) {
+                if (construct_link_successful(p)) {
+                    float linkStrength = new_link_strength();
+                    connectionGraph[firstNode][secondNode] = linkStrength;
+                    connectionGraph[secondNode][firstNode] = linkStrength;
+                }
+            }
+        }
     }
 
     // vector shouldn't be copied when returning here via RVO
@@ -42,8 +53,9 @@ class Graph {
         std::unordered_map<int, float>& nodeMap = connectionGraph[nodeId];
         for (auto neighborAndValue : nodeMap) {
             int neighbor = neighborAndValue.first;
-            nodeMap[neighbor] = new_link_strength();
-            connectionGraph[neighbor][nodeId] = new_link_strength();
+            float linkStrength = new_link_strength();
+            nodeMap[neighbor] = linkStrength;
+            connectionGraph[neighbor][nodeId] = linkStrength;
         }
     }
 
@@ -52,8 +64,12 @@ class Graph {
     }
 
     float new_link_strength() {
-        // TODO: determine strength of a new link after quarantine
-        // TBD (maybe a random value based on some metrics?)
+        // power law distribution
+    }
+
+    bool construct_link_successful(float p) {
+        float ranNum = rand() / RAND_MAX;
+        return ranNum < p;
     }
 };
 
