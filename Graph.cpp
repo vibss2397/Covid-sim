@@ -2,16 +2,19 @@
 #include <vector>
 #include <iostream>
 #include <math.h>
+#include <functional>
 
 class Graph {
     public:
         std::unordered_map<int, float>* connectionGraph; // connections and strength between people
         int numNodes;
         float connectionProb;
+        std::vector<Person> population;
 
-    Graph(int requestedNumNodes, float p) {
-        numNodes = requestedNumNodes;
+    Graph(std::vector<Person>& worldPopulation, float p) {
+        numNodes = population.size();
         connectionProb = p;
+        population = std::ref(worldPopulation);
         initialize_connection_graph();
     }
 
@@ -34,12 +37,13 @@ class Graph {
 
     // vector shouldn't be copied when returning here via RVO
     // make sure it doesn't copy
-    std::vector<int> get_neighbors(int nodeId) {
+    std::vector<std::pair<Person, float>> get_neighbors(int nodeId) {
         std::unordered_map<int, float>& nodeMap = connectionGraph[nodeId];
-        std::vector<int> neighbors(nodeMap.size());
+        std::vector<std::pair<Person, float>> neighbors(nodeMap.size());
         for (auto keyPair : nodeMap) {
             if (keyPair.second > 0) {
-                neighbors.push_back(keyPair.first);
+                int neighborId = keyPair.first;
+                neighbors.emplace_back(population[neighborId], keyPair.second);
             }
         }
         return neighbors;
