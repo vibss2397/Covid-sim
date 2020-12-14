@@ -180,7 +180,9 @@ public:
             denominator+=neighbor.second;
         }
         float weighted_covid_state = numerator/denominator;
-        if(local_covid_state>)
+        if(local_covid_state>threshold){
+            // make them infected.
+        }
     };
     
 };
