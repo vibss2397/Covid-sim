@@ -5,8 +5,11 @@ const float SIM_RATE = 1.0f; //length of time between each time frame of the sim
 int main(int argc, char* argv[])
 {
     // Initialize people array + graph
+    int peopleNum = argv[1];
+    float connectionPorb = argv[2];
     Person[] people = new Person[NUM_PERSONS];
-    Graph g = Graph.init(people, NUM_PERSONS);
+    // we should still working on the graph class
+    Graph g = Graph(peopleNum, connectionPorb);
     
     // Figure out who wears masks and who doesn’t
     // TODO: Determine if this is going to be binary (“wears mask” vs “doesn’t wear a mask”) or not
