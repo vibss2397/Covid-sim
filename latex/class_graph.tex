@@ -1,0 +1,80 @@
+\hypertarget{class_graph}{}\doxysection{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a6e4288fb71dbf5163154f8de52f0d985}\label{class_graph_a6e4288fb71dbf5163154f8de52f0d985}} 
+{\bfseries Graph} (std\+::vector$<$ \mbox{\hyperlink{class_person}{Person}} $\ast$ $>$ \&world\+Population, float p)
+\item 
+\mbox{\Hypertarget{class_graph_a075ad8a8a64b0ef738f29054f05e22d0}\label{class_graph_a075ad8a8a64b0ef738f29054f05e22d0}} 
+void \mbox{\hyperlink{class_graph_a075ad8a8a64b0ef738f29054f05e22d0}{initialize\+\_\+connection\+\_\+graph}} ()
+\begin{DoxyCompactList}\small\item\em Use random graph algorithm\+: each edge is decided with probability p Considered Babarasi-\/\+Albert model to satisfy Power Law (\href{https://en.wikipedia.org/wiki/Scale-free_network}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Scale-\/free\+\_\+network}}), but end up choosing random graph for simplicity and uniform degree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a0f7d98ff826528fea3e1ba5b89ba4ec5}\label{class_graph_a0f7d98ff826528fea3e1ba5b89ba4ec5}} 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{class_person}{Person}} $\ast$, float $>$ $>$ {\bfseries get\+\_\+neighbors} (int node\+Id)
+\item 
+\mbox{\Hypertarget{class_graph_a8f3b08fd5c5ea921b5534c44bdadb331}\label{class_graph_a8f3b08fd5c5ea921b5534c44bdadb331}} 
+void {\bfseries quarantine} (int node\+Id)
+\item 
+\mbox{\Hypertarget{class_graph_a25ac31c04b3a065eb59ad4181856cc82}\label{class_graph_a25ac31c04b3a065eb59ad4181856cc82}} 
+void {\bfseries unquarantine} (int node\+Id)
+\item 
+\mbox{\Hypertarget{class_graph_a8092d148289b7e18c304ae5f96af0f1e}\label{class_graph_a8092d148289b7e18c304ae5f96af0f1e}} 
+void {\bfseries vary\+\_\+connection\+\_\+strength} ()
+\item 
+float \mbox{\hyperlink{class_graph_a175c66989108aa99319590a6295dcdf8}{new\+\_\+link\+\_\+strength}} ()
+\begin{DoxyCompactList}\small\item\em Calculate a new link stength according to the power law distribution. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_graph_a196da9f19c3e3ea15dc78039962bb95f}\label{class_graph_a196da9f19c3e3ea15dc78039962bb95f}} 
+bool {\bfseries construct\+\_\+link\+\_\+successful} ()
+\item 
+float \mbox{\hyperlink{class_graph_aed36468d67764e053cc3be07eaae1483}{uniform}} ()
+\begin{DoxyCompactList}\small\item\em Generate a random number uniformly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_abd9177ecff2f15316a51d7d3e251693f}\label{class_graph_abd9177ecff2f15316a51d7d3e251693f}} 
+std\+::vector$<$ std\+::unordered\+\_\+map$<$ int, float $>$ $>$ {\bfseries connection\+Graph}
+\item 
+\mbox{\Hypertarget{class_graph_ad3db12d7f8327a6717fd161d694e43c0}\label{class_graph_ad3db12d7f8327a6717fd161d694e43c0}} 
+int {\bfseries num\+Nodes}
+\item 
+\mbox{\Hypertarget{class_graph_ad08c7c6292968b797bdce3a1f041e4ca}\label{class_graph_ad08c7c6292968b797bdce3a1f041e4ca}} 
+float {\bfseries connection\+Prob}
+\item 
+\mbox{\Hypertarget{class_graph_adf0d211a620437576ea5660afaa7aea0}\label{class_graph_adf0d211a620437576ea5660afaa7aea0}} 
+std\+::vector$<$ \mbox{\hyperlink{class_person}{Person}} $\ast$ $>$ {\bfseries population}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_a175c66989108aa99319590a6295dcdf8}\label{class_graph_a175c66989108aa99319590a6295dcdf8}} 
+\index{Graph@{Graph}!new\_link\_strength@{new\_link\_strength}}
+\index{new\_link\_strength@{new\_link\_strength}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{new\_link\_strength()}{new\_link\_strength()}}
+{\footnotesize\ttfamily float Graph\+::new\+\_\+link\+\_\+strength (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate a new link stength according to the power law distribution. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_aed36468d67764e053cc3be07eaae1483}\label{class_graph_aed36468d67764e053cc3be07eaae1483}} 
+\index{Graph@{Graph}!uniform@{uniform}}
+\index{uniform@{uniform}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{uniform()}{uniform()}}
+{\footnotesize\ttfamily float Graph\+::uniform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generate a random number uniformly. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+hpp\item 
+Graph.\+cpp\end{DoxyCompactItemize}

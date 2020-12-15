@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['calculate_5fcovid_2',['calculate_covid',['../classPerson.html#a8cb026d7961c2c61fe9924d63778b771',1,'Person']]],
+  ['chart_5fheight_3',['CHART_HEIGHT',['../classChartWriter.html#a6024566a7284778ce0ffd048c6a6bf33',1,'ChartWriter']]],
+  ['chart_5funiveristy_5fstatus_5fnice_5fnames_4',['CHART_UNIVERISTY_STATUS_NICE_NAMES',['../classChartWriter.html#a69684817a9cfd024e987432cc6a6283d',1,'ChartWriter']]],
+  ['chart_5funiversity_5fstatus_5fshort_5fnames_5',['CHART_UNIVERSITY_STATUS_SHORT_NAMES',['../classChartWriter.html#a582beff3f159e70cfed9b3e341645bcb',1,'ChartWriter']]],
+  ['chart_5fwidth_6',['CHART_WIDTH',['../classChartWriter.html#a0000344a1994b656b9a351e5b4b30d5d',1,'ChartWriter']]],
+  ['chartwriter_7',['ChartWriter',['../classChartWriter.html',1,'ChartWriter'],['../classChartWriter.html#a3d19a558ab60bd2e95426ddac20bcf50',1,'ChartWriter::ChartWriter()']]],
+  ['chartwriter_2ecpp_8',['ChartWriter.cpp',['../ChartWriter_8cpp.html',1,'']]],
+  ['chartwriter_2ehpp_9',['ChartWriter.hpp',['../ChartWriter_8hpp.html',1,'']]],
+  ['cleanup_10',['cleanup',['../classChartWriter.html#ab8a1a0d2f779e41cc280752c93a540e5',1,'ChartWriter']]],
+  ['connection_5fprob_11',['CONNECTION_PROB',['../Simulator_8cpp.html#a3d6a3dea19dfdf45b70d586f96cf0bb4',1,'Simulator.cpp']]],
+  ['connectiongraph_12',['connectionGraph',['../classGraph.html#abd9177ecff2f15316a51d7d3e251693f',1,'Graph']]],
+  ['connectionprob_13',['connectionProb',['../classGraph.html#ad08c7c6292968b797bdce3a1f041e4ca',1,'Graph']]],
+  ['construct_5flink_5fsuccessful_14',['construct_link_successful',['../classGraph.html#a196da9f19c3e3ea15dc78039962bb95f',1,'Graph']]],
+  ['covid_5fcounter_15',['covid_counter',['../classPerson.html#aa290c9314f0541351956abb71d7c0842',1,'Person']]],
+  ['covid_5fmu_5ffactor_16',['covid_mu_factor',['../classPerson.html#a36fd8cad02f7ef6c114d8a9bda9743dd',1,'Person']]],
+  ['covid_5fstate_17',['covid_state',['../classPerson.html#ab50459b3a98c4762f2348da038ce0c5c',1,'Person']]],
+  ['covid_2dsim_18',['Covid-sim',['../md_README.html',1,'']]]
+];

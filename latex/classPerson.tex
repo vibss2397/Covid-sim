@@ -1,0 +1,182 @@
+\hypertarget{classPerson}{}\doxysection{Person Class Reference}
+\label{classPerson}\index{Person@{Person}}
+
+
+{\ttfamily \#include $<$Person.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPerson_a1f8a0907d4c33fc23a827ef2873180c7}{Person}} (int16\+\_\+t id=-\/1, int16\+\_\+t uni\+\_\+\+Status=-\/1, int16\+\_\+t age\+\_\+arg=-\/1, int16\+\_\+t cov\+\_\+state=0, int16\+\_\+t mask\+\_\+state=0)
+\item 
+int16\+\_\+t \mbox{\hyperlink{classPerson_a7bea8dc854632188f825790e1861f72c}{intialize\+\_\+uni\+\_\+status}} (int16\+\_\+t e)
+\item 
+int16\+\_\+t \mbox{\hyperlink{classPerson_aef387bc024c415f87da0df3bfb6471bd}{initialize\+\_\+age}} (int16\+\_\+t b)
+\item 
+void \mbox{\hyperlink{classPerson_aeb3314ff898774019171b365fb81f109}{set\+\_\+mask}} ()
+\item 
+void \mbox{\hyperlink{classPerson_ab18c16d396011166c243aa2781404fae}{set\+\_\+state}} (int16\+\_\+t temp)
+\item 
+int16\+\_\+t \mbox{\hyperlink{classPerson_af9bc1839071533d65169ea9b0e25226a}{set\+\_\+covid\+\_\+mu}} ()
+\begin{DoxyCompactList}\small\item\em This function calculates the covid\+\_\+mu\+\_\+factor for determining severity of covid based on age, since that is an inherent factor. People with more age will be more susceptible to contracting severe covid symptoms than younger people. Data for setting covid\+\_\+mu obtained from \+: \href{https://www.cdc.gov/coronavirus/2019-ncov/hcp/duration-isolation.html}{\texttt{ https\+://www.\+cdc.\+gov/coronavirus/2019-\/ncov/hcp/duration-\/isolation.\+html}}. For mild cases, people remain infected for up to 10 days. For severe cases, people remain infected for up to 20 days. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, int16\+\_\+t $>$ \mbox{\hyperlink{classPerson_a74e084a1ff32fbf3432ceb1059fa12ba}{get\+\_\+details}} ()
+\begin{DoxyCompactList}\small\item\em When called, returns a map object containing person\textquotesingle{}s information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPerson_abca459b7294de94e01d02e136b639707}{update\+\_\+covid\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em called at the end of timestep. uses poisson distribution with lambda = covid\+\_\+mu (initialized in constructor). function uses the pdf of poisson to determine which state of covid person is in and make possible transitions. Uses data provided by C\+DC \+: \href{https://www.cdc.gov/nchs/nvss/vsrr/covid_weekly/index.htm}{\texttt{ https\+://www.\+cdc.\+gov/nchs/nvss/vsrr/covid\+\_\+weekly/index.\+htm}} to determine death rate for age groups. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPerson_a8cb026d7961c2c61fe9924d63778b771}{calculate\+\_\+covid}} (\mbox{\hyperlink{classGraph}{Graph}} graph\+\_\+instance)
+\begin{DoxyCompactList}\small\item\em called at the end of each timestep(after update\+\_\+covid\+\_\+step()). uses factors such as \+: neighbors, mask\+\_\+on/mask\+\_\+off etc for calculating if a person has covid or not. Data for figuring out how much do masks reduce transmission \+: \href{https://www.ucdavis.edu/coronavirus/news/your-mask-cuts-own-risk-65-percent/}{\texttt{ https\+://www.\+ucdavis.\+edu/coronavirus/news/your-\/mask-\/cuts-\/own-\/risk-\/65-\/percent/}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int16\+\_\+t \mbox{\hyperlink{classPerson_a1151224d6b8eb7ac7724231c45e2a833}{bu\+\_\+id}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{classPerson_a765c6cde3efa230f481c265bfd212426}{age}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{classPerson_ab50459b3a98c4762f2348da038ce0c5c}{covid\+\_\+state}} \mbox{[}2\mbox{]}
+\item 
+int16\+\_\+t \mbox{\hyperlink{classPerson_af776ebd3413d2a8777ad198c48eb5e4f}{wears\+\_\+mask}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{classPerson_af5e3cdedd4f0e065b80ba6041fe8a767}{university\+\_\+status}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{classPerson_aa290c9314f0541351956abb71d7c0842}{covid\+\_\+counter}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{classPerson_a36fd8cad02f7ef6c114d8a9bda9743dd}{covid\+\_\+mu\+\_\+factor}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPerson_a1f8a0907d4c33fc23a827ef2873180c7}\label{classPerson_a1f8a0907d4c33fc23a827ef2873180c7}} 
+\index{Person@{Person}!Person@{Person}}
+\index{Person@{Person}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{Person()}{Person()}}
+{\footnotesize\ttfamily Person\+::\+Person (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{id = {\ttfamily -\/1},  }\item[{int16\+\_\+t}]{uni\+\_\+\+Status = {\ttfamily -\/1},  }\item[{int16\+\_\+t}]{age\+\_\+arg = {\ttfamily -\/1},  }\item[{int16\+\_\+t}]{cov\+\_\+state = {\ttfamily 0},  }\item[{int16\+\_\+t}]{mask\+\_\+state = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPerson_a8cb026d7961c2c61fe9924d63778b771}\label{classPerson_a8cb026d7961c2c61fe9924d63778b771}} 
+\index{Person@{Person}!calculate\_covid@{calculate\_covid}}
+\index{calculate\_covid@{calculate\_covid}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{calculate\_covid()}{calculate\_covid()}}
+{\footnotesize\ttfamily void Person\+::calculate\+\_\+covid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}}]{graph\+\_\+instance }\end{DoxyParamCaption})}
+
+
+
+called at the end of each timestep(after update\+\_\+covid\+\_\+step()). uses factors such as \+: neighbors, mask\+\_\+on/mask\+\_\+off etc for calculating if a person has covid or not. Data for figuring out how much do masks reduce transmission \+: \href{https://www.ucdavis.edu/coronavirus/news/your-mask-cuts-own-risk-65-percent/}{\texttt{ https\+://www.\+ucdavis.\+edu/coronavirus/news/your-\/mask-\/cuts-\/own-\/risk-\/65-\/percent/}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph\+\_\+instance} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPerson_a74e084a1ff32fbf3432ceb1059fa12ba}\label{classPerson_a74e084a1ff32fbf3432ceb1059fa12ba}} 
+\index{Person@{Person}!get\_details@{get\_details}}
+\index{get\_details@{get\_details}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{get\_details()}{get\_details()}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ std\+::string, int16\+\_\+t $>$ Person\+::get\+\_\+details (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+When called, returns a map object containing person\textquotesingle{}s information. 
+
+\begin{DoxyReturn}{Returns}
+std\+::unordered\+\_\+map$<$std\+::string, int16\+\_\+t$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPerson_aef387bc024c415f87da0df3bfb6471bd}\label{classPerson_aef387bc024c415f87da0df3bfb6471bd}} 
+\index{Person@{Person}!initialize\_age@{initialize\_age}}
+\index{initialize\_age@{initialize\_age}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{initialize\_age()}{initialize\_age()}}
+{\footnotesize\ttfamily int16\+\_\+t Person\+::initialize\+\_\+age (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classPerson_a7bea8dc854632188f825790e1861f72c}\label{classPerson_a7bea8dc854632188f825790e1861f72c}} 
+\index{Person@{Person}!intialize\_uni\_status@{intialize\_uni\_status}}
+\index{intialize\_uni\_status@{intialize\_uni\_status}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{intialize\_uni\_status()}{intialize\_uni\_status()}}
+{\footnotesize\ttfamily int16\+\_\+t Person\+::intialize\+\_\+uni\+\_\+status (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{e }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classPerson_af9bc1839071533d65169ea9b0e25226a}\label{classPerson_af9bc1839071533d65169ea9b0e25226a}} 
+\index{Person@{Person}!set\_covid\_mu@{set\_covid\_mu}}
+\index{set\_covid\_mu@{set\_covid\_mu}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{set\_covid\_mu()}{set\_covid\_mu()}}
+{\footnotesize\ttfamily int16\+\_\+t Person\+::set\+\_\+covid\+\_\+mu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function calculates the covid\+\_\+mu\+\_\+factor for determining severity of covid based on age, since that is an inherent factor. People with more age will be more susceptible to contracting severe covid symptoms than younger people. Data for setting covid\+\_\+mu obtained from \+: \href{https://www.cdc.gov/coronavirus/2019-ncov/hcp/duration-isolation.html}{\texttt{ https\+://www.\+cdc.\+gov/coronavirus/2019-\/ncov/hcp/duration-\/isolation.\+html}}. For mild cases, people remain infected for up to 10 days. For severe cases, people remain infected for up to 20 days. 
+
+\begin{DoxyReturn}{Returns}
+int16\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPerson_aeb3314ff898774019171b365fb81f109}\label{classPerson_aeb3314ff898774019171b365fb81f109}} 
+\index{Person@{Person}!set\_mask@{set\_mask}}
+\index{set\_mask@{set\_mask}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{set\_mask()}{set\_mask()}}
+{\footnotesize\ttfamily void Person\+::set\+\_\+mask (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classPerson_ab18c16d396011166c243aa2781404fae}\label{classPerson_ab18c16d396011166c243aa2781404fae}} 
+\index{Person@{Person}!set\_state@{set\_state}}
+\index{set\_state@{set\_state}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{set\_state()}{set\_state()}}
+{\footnotesize\ttfamily void Person\+::set\+\_\+state (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{temp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classPerson_abca459b7294de94e01d02e136b639707}\label{classPerson_abca459b7294de94e01d02e136b639707}} 
+\index{Person@{Person}!update\_covid\_state@{update\_covid\_state}}
+\index{update\_covid\_state@{update\_covid\_state}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{update\_covid\_state()}{update\_covid\_state()}}
+{\footnotesize\ttfamily void Person\+::update\+\_\+covid\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+called at the end of timestep. uses poisson distribution with lambda = covid\+\_\+mu (initialized in constructor). function uses the pdf of poisson to determine which state of covid person is in and make possible transitions. Uses data provided by C\+DC \+: \href{https://www.cdc.gov/nchs/nvss/vsrr/covid_weekly/index.htm}{\texttt{ https\+://www.\+cdc.\+gov/nchs/nvss/vsrr/covid\+\_\+weekly/index.\+htm}} to determine death rate for age groups. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPerson_a765c6cde3efa230f481c265bfd212426}\label{classPerson_a765c6cde3efa230f481c265bfd212426}} 
+\index{Person@{Person}!age@{age}}
+\index{age@{age}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{age}{age}}
+{\footnotesize\ttfamily int16\+\_\+t Person\+::age}
+
+\mbox{\Hypertarget{classPerson_a1151224d6b8eb7ac7724231c45e2a833}\label{classPerson_a1151224d6b8eb7ac7724231c45e2a833}} 
+\index{Person@{Person}!bu\_id@{bu\_id}}
+\index{bu\_id@{bu\_id}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{bu\_id}{bu\_id}}
+{\footnotesize\ttfamily int16\+\_\+t Person\+::bu\+\_\+id}
+
+\mbox{\Hypertarget{classPerson_aa290c9314f0541351956abb71d7c0842}\label{classPerson_aa290c9314f0541351956abb71d7c0842}} 
+\index{Person@{Person}!covid\_counter@{covid\_counter}}
+\index{covid\_counter@{covid\_counter}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{covid\_counter}{covid\_counter}}
+{\footnotesize\ttfamily int16\+\_\+t Person\+::covid\+\_\+counter}
+
+\mbox{\Hypertarget{classPerson_a36fd8cad02f7ef6c114d8a9bda9743dd}\label{classPerson_a36fd8cad02f7ef6c114d8a9bda9743dd}} 
+\index{Person@{Person}!covid\_mu\_factor@{covid\_mu\_factor}}
+\index{covid\_mu\_factor@{covid\_mu\_factor}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{covid\_mu\_factor}{covid\_mu\_factor}}
+{\footnotesize\ttfamily int16\+\_\+t Person\+::covid\+\_\+mu\+\_\+factor}
+
+\mbox{\Hypertarget{classPerson_ab50459b3a98c4762f2348da038ce0c5c}\label{classPerson_ab50459b3a98c4762f2348da038ce0c5c}} 
+\index{Person@{Person}!covid\_state@{covid\_state}}
+\index{covid\_state@{covid\_state}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{covid\_state}{covid\_state}}
+{\footnotesize\ttfamily int16\+\_\+t Person\+::covid\+\_\+state\mbox{[}2\mbox{]}}
+
+\mbox{\Hypertarget{classPerson_af5e3cdedd4f0e065b80ba6041fe8a767}\label{classPerson_af5e3cdedd4f0e065b80ba6041fe8a767}} 
+\index{Person@{Person}!university\_status@{university\_status}}
+\index{university\_status@{university\_status}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{university\_status}{university\_status}}
+{\footnotesize\ttfamily int16\+\_\+t Person\+::university\+\_\+status}
+
+\mbox{\Hypertarget{classPerson_af776ebd3413d2a8777ad198c48eb5e4f}\label{classPerson_af776ebd3413d2a8777ad198c48eb5e4f}} 
+\index{Person@{Person}!wears\_mask@{wears\_mask}}
+\index{wears\_mask@{wears\_mask}!Person@{Person}}
+\doxysubsubsection{\texorpdfstring{wears\_mask}{wears\_mask}}
+{\footnotesize\ttfamily int16\+\_\+t Person\+::wears\+\_\+mask}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Person_8hpp}{Person.\+hpp}}\item 
+\mbox{\hyperlink{Person_8cpp}{Person.\+cpp}}\end{DoxyCompactItemize}
