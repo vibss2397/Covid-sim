@@ -48,7 +48,7 @@ void ChartWriter::openWebpage()
 }
 
 // Update the data files from a given timestamp, people array, and testing database
-void ChartWriter::updateFromData(float time, std::vector<Person> people, int num_people, TestingDatabase testingDatabase)
+void ChartWriter::updateFromData(float time, std::vector<Person*> people, int num_people, TestingDatabase testingDatabase)
 {
 	// Write new output to the .dat files used in graph creation
 	// Reset all counters to 0
@@ -63,43 +63,43 @@ void ChartWriter::updateFromData(float time, std::vector<Person> people, int num
 	}
 	for (int i = 0; i < num_people; i++)
 	{
-		Person person = people[i];
+		Person *person = people[i];
 		// Collect data for covid state graph(s)
-		int16_t state = person.covid_state[0];
+		int16_t state = person->covid_state[0];
 		if (state == 0)
 		{
 			healthyCounts[4]++;
-			healthyCounts[person.university_status]++;
+			healthyCounts[person->university_status]++;
 		}
 		else if (state == 1 || state == 2 ||  state == 3)
 		{
 			infectedCounts[4]++;
-			infectedCounts[person.university_status]++;
+			infectedCounts[person->university_status]++;
 		}
 		else if (state == 4)
 		{
 			recoveredCounts[4]++;
-			recoveredCounts[person.university_status]++;
+			recoveredCounts[person->university_status]++;
 		}
 		else if (state == -1)
 		{
 			deadCounts[4]++;
-			deadCounts[person.university_status]++;
+			deadCounts[person->university_status]++;
 		}
 		// Collect data for covid tests graph(s)
 		// Note: exclude "tests" from dead people
 		int nextTestIndex = testingDatabase.test_num[i];
-		if (nextTestIndex > lastKnownTestIndex[i] && person.covid_state[0] != -1)
+		if (nextTestIndex > lastKnownTestIndex[i] && person->covid_state[0] != -1)
 		{
 			if (testingDatabase.results[i][nextTestIndex-1])
 			{
 				positiveTestCounts[4]++;
-				positiveTestCounts[person.university_status]++;
+				positiveTestCounts[person->university_status]++;
 			}
 			else
 			{
 				negativeTestCounts[4]++;
-				negativeTestCounts[person.university_status]++;
+				negativeTestCounts[person->university_status]++;
 			}
 			lastKnownTestIndex[i] = nextTestIndex;
 		}
@@ -107,7 +107,8 @@ void ChartWriter::updateFromData(float time, std::vector<Person> people, int num
 	for (int i = 0; i < 5; i++)
 	{
 		covidStatusByGroupFiles[i] << time << "\t" << healthyCounts[i] << "\t" << infectedCounts[i] << "\t" << deadCounts[i] << "\t" << recoveredCounts[i] << "\n";
-		covidTestsByGroupFiles[i] << time << "\t" << positiveTestCounts[i] << "\t" << negativeTestCounts[i] << "\n";
+		if (time > 0)
+			covidTestsByGroupFiles[i] << time << "\t" << positiveTestCounts[i] << "\t" << negativeTestCounts[i] << "\n";
 	}
 }
 
@@ -159,6 +160,7 @@ void ChartWriter::writeAllCharts()
 										"set boxwidth 1 relative;"
 										"set key outside;"
 										"set key bottom;"
+										"set xrange [-0.5:];"
 										"set style fill solid 1.0 border -1;"
 										"plot 'covid-tests-results-group-0.dat' using 3 title 'Negative test results (" + CHART_UNIVERISTY_STATUS_NICE_NAMES[0] + ")' linecolor rgb '#267F00',"
 											"'covid-tests-results-group-1.dat' using 3 title 'Negative test results (" + CHART_UNIVERISTY_STATUS_NICE_NAMES[1] + ")' linecolor rgb '#4CFF00',"
@@ -167,7 +169,7 @@ void ChartWriter::writeAllCharts()
 											"'covid-tests-results-group-0.dat' using 2 title 'Positive test results (" + CHART_UNIVERISTY_STATUS_NICE_NAMES[0] + ")' linecolor rgb '#7F3300',"
 											"'covid-tests-results-group-1.dat' using 2 title 'Positive test results (" + CHART_UNIVERISTY_STATUS_NICE_NAMES[1] + ")' linecolor rgb '#7C0649',"
 											"'covid-tests-results-group-2.dat' using 2 title 'Positive test results (" + CHART_UNIVERISTY_STATUS_NICE_NAMES[2] + ")' linecolor rgb '#FF0000',"
-											"'covid-tests-results-group-3.dat' using 2:xticlabels(1) title 'Positive test results (" + CHART_UNIVERISTY_STATUS_NICE_NAMES[3] + ")' linecolor rgb '#FF7A38'"
+											"'covid-tests-results-group-3.dat' using 2 title 'Positive test results (" + CHART_UNIVERISTY_STATUS_NICE_NAMES[3] + ")' linecolor rgb '#FF7A38'"
 									"\"";
 	system(testsGraphCommand.c_str());
 }
@@ -215,9 +217,10 @@ void ChartWriter::writeTestsGraph(std::string filename, std::ofstream *file, int
 										"set boxwidth 1 relative;"
 										"set key outside;"
 										"set key bottom;"
+										"set xrange [-0.5:];"
 										"set style fill solid 1.0 border -1;"
 										"plot '" + filename + "' using 3 title 'Negative test results' linecolor rgb 'green',"
-											"'' using 2:xticlabels(1) title 'Positive test results' linecolor rgb 'red'"
+											"'' using 2 title 'Positive test results' linecolor rgb 'red'"
 									"\"";
 	system(testsGraphCommand.c_str());
 }

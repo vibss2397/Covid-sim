@@ -57,7 +57,7 @@ class ChartWriter
 
         void openWebpage();
 
-        void updateFromData(float time, std::vector<Person> people, int num_people, TestingDatabase testingDatabase);
+        void updateFromData(float time, std::vector<Person*> people, int num_people, TestingDatabase testingDatabase);
 
         void writeAllCharts();
 

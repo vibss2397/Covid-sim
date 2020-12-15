@@ -5,7 +5,7 @@
 #include <functional>
 #include "Graph.hpp"
 
-Graph::Graph(std::vector<Person>& worldPopulation, float p) {
+Graph::Graph(std::vector<Person*>& worldPopulation, float p) {
     connectionProb = p;
     population = std::ref(worldPopulation);
     numNodes = population.size();
@@ -36,17 +36,10 @@ void Graph::initialize_connection_graph() {
 
 // vector shouldn't be copied when returning here via RVO
 // make sure it doesn't copy
-std::vector<std::pair<Person, float>> Graph::get_neighbors(int nodeId) {
-    std::cout << "Made it to the start of get_neighbors()" << std::endl;
-    // std::cout<<connectionGraph[nodeId].size();
-    // for (std::pair<int, float> element : connectionGraph[nodeId])
-    // {
-    //     std::cout << element.first << " :: " << element.second << std::endl;
-    // }
-
-    std::unordered_map<int, float>& nodeMap = connectionGraph[nodeId];;
+std::vector<std::pair<Person*, float>> Graph::get_neighbors(int nodeId) {
+    std::unordered_map<int, float>& nodeMap = connectionGraph[nodeId];
     //std::cout << "node map size in get neighbors: " << nodeMap.size() << std::endl;
-    std::vector<std::pair<Person, float>> neighbors;
+    std::vector<std::pair<Person*, float>> neighbors;
     for (auto keyPair : nodeMap) {
         if (keyPair.second > 0) {
             int neighborId = keyPair.first;

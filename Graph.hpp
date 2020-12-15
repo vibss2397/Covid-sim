@@ -10,13 +10,13 @@ class Graph {
         std::vector<std::unordered_map<int, float>> connectionGraph; // connections and strength between people
         int numNodes;
         float connectionProb;
-        std::vector<Person> population;
+        std::vector<Person*> population;
 
-    Graph(std::vector<Person>& worldPopulation, float p);
+    Graph(std::vector<Person*>& worldPopulation, float p);
 
     void initialize_connection_graph();
 
-    std::vector<std::pair<Person, float>> get_neighbors(int nodeId);
+    std::vector<std::pair<Person*, float>> get_neighbors(int nodeId);
 
     void quarantine(int nodeId);
 
