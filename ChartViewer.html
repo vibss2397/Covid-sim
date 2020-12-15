@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>
+			COVID-19 Simulation Results
+		</title>
+		<script>
+			function updateGroup()
+			{
+				var group = document.getElementById("groupSelector");
+				document.getElementById("status-image").src = "./covid-status-graph-" + group.value + ".png";
+				document.getElementById("tests-image").src = "./covid-tests-graph-" + group.value + ".png";
+			}
+		</script>
+	</head>
+	<body style="background: #E0E0E0">
+		<span style="position:fixed; right:10px">
+			<label name="groupSelector">Group(s) to view statistics for:</label>
+			<select id="groupSelector" name="groupSelector" autofocus="true" onchange="updateGroup()">
+				<option value="all-combined">All Groups (combined)</option>
+				<option value="all-separated">All Groups (separated)</option>
+				<option value="undergrads">Undergraduate Students only</option>
+				<option value="grads">Graduate Students only</option>
+				<option value="faculty">Faculty only</option>
+				<option value="staff">Staff only</option>
+			</select>
+		</span>
+		<center>
+			<h1 style="padding-top: 24px">Covid-19 Simulation Results</h1>
+			<img id="status-image" src="./covid-status-graph-all-combined.png" style="max-width: 100%; height: auto"/>
+			<hr/>
+			<img id="tests-image" src="./covid-tests-graph-all-combined.png" style="max-width: 100%; height: auto"/>
+		</center>
+	</body>
+	<script>
+		updateGroup();
+	</script>
+</html>
