@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 Person::Person(int16_t id, int16_t uni_Status, int16_t age_arg, int16_t cov_state, int16_t mask_state){
-    if(id==-1){
+    if(id == -1){
         // sets bu_id to a random number.
         bu_id = rand(); 
     }else{
@@ -23,7 +23,7 @@ Person::Person(int16_t id, int16_t uni_Status, int16_t age_arg, int16_t cov_stat
     // default false
     wears_mask = mask_state; 
     // if a person is infected at start, 
-    if(covid_state[1]==1) covid_counter = 1;  
+    if(covid_state[1] == 1) covid_counter = 1;  
     else covid_counter = -1;
     covid_mu_factor = set_covid_mu();
 };
@@ -31,24 +31,24 @@ Person::Person(int16_t id, int16_t uni_Status, int16_t age_arg, int16_t cov_stat
 int16_t Person::intialize_uni_status(int16_t e){
     if(e==-1){
         // Undergrad : 17000(37%), grad : 15000(33%), faculty : 4000(9%), other : 10000(21%), total : 46000.
-        int rand_nb = rand() %100;
-        if(rand_nb<=36) {return 0;}
-        else if(rand_nb>36 && rand_nb<70) {return 1;}
-        else if(rand_nb>=70 && rand_nb<79) {return 2;}
-        else {return 3;}
+        int rand_nb = rand() % 100;
+        if(rand_nb <= 36) {return 0;}
+        else if(rand_nb > 36 && rand_nb < 70) return 1;
+        else if(rand_nb >= 70 && rand_nb < 79) return 2;
+        else return 3;
     }else{
         return e;
     }
 };
 
 int16_t Person::initialize_age(int16_t b){
-    if(b==-1){
-        if(university_status==0 || university_status==1){
+    if(b == -1){
+        if(university_status == 0 || university_status == 1){
             // age for uni students is between 15 and 28-29
-            return rand()%14 + 15; 
+            return rand() % 14 + 15; 
         }else{
             // age for faculty and staff is between 30-80
-            return rand()%54 + 30; 
+            return rand() % 54 + 30; 
         }
     }else{
         return b;
@@ -74,12 +74,12 @@ void Person::set_state(int16_t temp){
 int16_t Person::set_covid_mu(){
     int16_t temp;
     // younger students have mu from [5, 10] (will help in recovering early, less death).
-    if(age<30) temp = rand()%(10-5+1) + 5;
-    else if(age>=30 && age<40)temp = 10;
-    else if(age>=40 && age<50) temp = 11;
-    else if(age>=50 && age<60) temp = 12;
-    else if(age>=60 && age<70) temp = 13;
-    else if(age>=70) temp = 14;
+    if(age < 30) temp = rand() % (10 - 5+1) + 5;
+    else if(age >= 30 && age < 40) temp = 10;
+    else if(age >= 40 && age < 50) temp = 11;
+    else if(age >= 50 && age < 60) temp = 12;
+    else if(age >= 60 && age < 70) temp = 13;
+    else if(age >= 70) temp = 14;
     return temp;
 };
 
@@ -106,38 +106,38 @@ std::unordered_map<std::string, int16_t> Person::get_details(){
 void Person::update_covid_state(){ 
     covid_state[0] = covid_state[1];
     // If person is infected, symptomatic or quarantine, only then update state.
-    if(covid_state[0]==1||covid_state[0]==2 || covid_state[0]==3){ 
+    if(covid_state[0] == 1 || covid_state[0] == 2 || covid_state[0] == 3){ 
         double pdf_value = poisson_pdf(covid_mu_factor, covid_counter);
-        if(pdf_value>=0.01){
-            if(covid_state[1]==1){covid_state[1] = 2;}
-            else if(covid_state[1]==2 || covid_state[1]==3){
+        if(pdf_value >= 0.01){
+            if(covid_state[1] == 1) covid_state[1] = 2;
+            else if(covid_state[1] == 2 || covid_state[1] == 3){
                 // Determine death based on day
-                if(covid_counter>=16 && covid_counter<20){
+                if(covid_counter >= 16 && covid_counter < 20){
                     // based on probability see if they can be killed.
-                    float rand_nb = ((float)rand()*100)/(float) RAND_MAX;
-                    if(covid_mu_factor<10){
-                        if(rand_nb<=1)
+                    float rand_nb = ( (float) rand() * 100) / (float) RAND_MAX;
+                    if(covid_mu_factor < 10){
+                        if(rand_nb <= 1)
                             covid_state[1] = -1;
-                    }else if(covid_mu_factor==10){
-                        if(rand_nb<=2)
+                    }else if(covid_mu_factor == 10){
+                        if(rand_nb <= 2)
                             covid_state[1] = -1;
-                    }else if(covid_mu_factor==11){
-                        if(rand_nb<=5)
+                    }else if(covid_mu_factor == 11){
+                        if(rand_nb <= 5)
                             covid_state[1] = -1;
-                    }else if(covid_mu_factor==12){
-                        if(rand_nb<=12)
+                    }else if(covid_mu_factor == 12){
+                        if(rand_nb <= 12)
                             covid_state[1] = -1;
-                    }else if(covid_mu_factor==13){
-                        if(rand_nb<=20)
+                    }else if(covid_mu_factor == 13){
+                        if(rand_nb <= 20)
                             covid_state[1] = -1;
-                    }else if(covid_mu_factor==14){
-                        if(rand_nb<=30)
+                    }else if(covid_mu_factor == 14){
+                        if(rand_nb <= 30)
                             covid_state[1] = -1;
                     }
 
-                }else if(covid_counter>=20){
+                }else if(covid_counter >= 20){
                     // Kill high risk group and recover everyone else.
-                    if(covid_mu_factor>=13){
+                    if(covid_mu_factor >= 13){
                         covid_state[1] = -1;
                     }else{
                         covid_state[1] = 4; 
@@ -146,7 +146,7 @@ void Person::update_covid_state(){
             }
         }
         else{
-            if(covid_state[0]==2 || covid_state[0]==3){
+            if(covid_state[0] == 2 || covid_state[0] == 3){
                 // recover everyone here.
                 covid_state[1] = 4;
             }
@@ -170,21 +170,24 @@ void Person::calculate_covid(Graph graph_instance){
     float weighted_probs = 1.0;
     for(auto neighbor:neighbors){
         float not_covid_factor;
-        if(neighbor.first->covid_state[0]==0||neighbor.first->covid_state[0]==3||neighbor.first->covid_state[0]==4||neighbor.first->covid_state[0]==-1){
-            not_covid_factor = 1; // not covid factor is 1 for quarantine, recovered and safe
-        }else if(neighbor.first->covid_state[0]==1){
-            not_covid_factor = 0.5; // 0.5 for when person is not symptomatic but infected(low amount of viral load).
+        if(neighbor.first->covid_state[0] == 0 || neighbor.first->covid_state[0] == 3 || neighbor.first->covid_state[0] == 4 || neighbor.first->covid_state[0] == -1){
+            // not covid factor is 1 for quarantine, recovered and safe
+            not_covid_factor = 1; 
+        }else if(neighbor.first->covid_state[0] == 1){
+            // 0.5 for when person is not symptomatic but infected(low amount of viral load).
+            not_covid_factor = 0.5; 
         }else{
-            not_covid_factor = 0.1; // 0.1(low value) for when person is symptomatic (will bring the chance of not having covid down).
+            // 0.1(low value) for when person is symptomatic (will bring the chance of not having covid down).
+            not_covid_factor = 0.1; 
         }
-        float mask_factor = (neighbor.first->wears_mask==true&&(not_covid_factor==0.5 || not_covid_factor==0.1))?0.65:1.0;
-        weighted_not_covid_probs*=neighbor.second*mask_factor*not_covid_factor;
+        float mask_factor = (neighbor.first->wears_mask == true && (not_covid_factor == 0.5 || not_covid_factor == 0.1)) ? 0.65 : 1.0;
+        weighted_not_covid_probs *= neighbor.second*mask_factor*not_covid_factor;
     }
     float weighted_covid_probs = 1 - weighted_not_covid_probs;
     
     float rand_covid_die = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
     if(weighted_covid_probs<=rand_covid_die && covid_state[0] == 0){
-        // the person gets infected with a chance of product of weighted_probs
+        /// the person gets infected with a chance of product of weighted_probs
         covid_state[1] = 1; 
         covid_counter = 1;
     }
