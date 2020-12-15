@@ -17,7 +17,7 @@ make clean && make
 
 
 ## Documentation
-Documentation 
+Documentation can be accessed by going into html/index.html
 
 
 When run, statistics will be printed out each iteration, and at the end of the run gnuplot will be called to generate line / stacked bar graphs.
