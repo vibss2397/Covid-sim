@@ -8,7 +8,7 @@
 #include "ChartWriter.hpp"
 
 const int NUM_PERSONS = 16; //total people number
-const float SIM_DURATION = 10.0f; //how many units of time do we run the simulation for?
+const float SIM_DURATION = 2.0f; //how many units of time do we run the simulation for?
 const float SIM_RATE = 1.0f; //length of time between each time frame of the simulation
 const float CONNECTION_PROB = 0.8f; //the connection probability
 const int MASK_PROB = 50; //percentage of how many people wear mask on campus
@@ -17,7 +17,6 @@ int main(int argc, char* argv[])
 {
     std::vector<Person> people(NUM_PERSONS);
     // we should still working on the graph class
-    Graph g = Graph(people, CONNECTION_PROB);
     int numTestsPerPerson = SIM_DURATION/SIM_RATE;
     TestingDatabase tb = TestingDatabase(NUM_PERSONS, numTestsPerPerson);
 	ChartWriter chartWriter(NUM_PERSONS);
@@ -27,18 +26,19 @@ int main(int argc, char* argv[])
     int i;
     for (i = 0; i < NUM_PERSONS; i++)
     {
-        Person person = Person(i);
+        Person person = Person(i, -1, -1, rand() % 2 == 0);
         people[i] = person;
         bool TrueFalse = (rand() % 100) < MASK_PROB;
         if(TrueFalse){
             person.set_mask();
-            printf("person id = %d mask = %d\n",person.bu_id, person.wears_mask);
+            //printf("person id = %d mask = %d\n",person.bu_id, person.wears_mask);
         }
     }
 
+    Graph g = Graph(people, CONNECTION_PROB);
+
     //#pragma omp barrier //wait until all threads are done
 
-    std::cout << "Made it to the start of the loop" << std::endl;
     float time = 0.0f; //current time
     while(time < SIM_DURATION){
         
@@ -68,7 +68,6 @@ int main(int argc, char* argv[])
         
         time += SIM_RATE;
     }
-    std::cout << "Made it to the end of the loop" << std::endl;
 	
 	// Output charts
 	chartWriter.writeAllCharts();

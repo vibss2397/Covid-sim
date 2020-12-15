@@ -87,8 +87,9 @@ void ChartWriter::updateFromData(float time, std::vector<Person> people, int num
 			deadCounts[person.university_status]++;
 		}
 		// Collect data for covid tests graph(s)
+		// Note: exclude "tests" from dead people
 		int nextTestIndex = testingDatabase.test_num[i];
-		if (nextTestIndex > lastKnownTestIndex[i])
+		if (nextTestIndex > lastKnownTestIndex[i] && person.covid_state[0] != -1)
 		{
 			if (testingDatabase.results[i][nextTestIndex-1])
 			{

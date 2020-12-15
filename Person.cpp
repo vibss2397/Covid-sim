@@ -78,7 +78,6 @@ std::unordered_map<std::string, int16_t> Person::get_details(){
     return stats;
 };
 void Person::update_covid_state(){ // called at the end of timestep.
-    std::cout << "Made it into update_covid_state()" << std::endl;
     // uses poisson distribution with lambda = covid_mu (initialized in constructor).
     // function uses the pdf of poisson to determine which state of covid person is in and make possible transitions.
     // Uses data provided by CDC : https://www.cdc.gov/nchs/nvss/vsrr/covid_weekly/index.htm to determine death rate for age groups.
@@ -139,18 +138,22 @@ void Person::update_covid_state(){ // called at the end of timestep.
         }
     }
     covid_counter += 1;
-    std::cout << "Made it to the end of update_covid_state()" << std::endl;
 }
 
 void Person::calculate_covid(Graph graph_instance){ // called at the end of each timestep(after update_covid_step()).
-    std::cout << "Made it to the start of calculate_covid()" << std::endl;
     // uses factors such as : neighbors, mask_on/mask_off etc for calculating if a person has covid or not.
     // Data for figuring out how much do masks reduce transmission : https://www.ucdavis.edu/coronavirus/news/your-mask-cuts-own-risk-65-percent/
-    std::cout << "checkpoint 1" << std::endl;
     std::vector<std::pair<Person, float>> neighbors = graph_instance.get_neighbors(bu_id);
-    std::cout << "checkpoint 2" << std::endl;
+    //std::cout << "Hi there, size of neigbors vector is " << neighbors.size() << std::endl;
     float weighted_probs = 1.0;
     for(auto neighbor:neighbors){
+
+        if (neighbor.first.bu_id >= 16)
+        {
+            std::cout << "THIS SHOULDN'T HAPPEN: graph.get_neighbors(bu_id) returned a neighbor with bu_id " << neighbor.first.bu_id << ", but all bu_id are in range [0,16)" << std::endl;
+            exit(0);
+        }
+
         int covid_factor;
         if(neighbor.first.covid_state[0]==0||neighbor.first.covid_state[0]==3||neighbor.first.covid_state[0]==4||neighbor.first.covid_state[0]==-1){
             covid_factor = 0; // covid factor is 0 for quarantine, recovered and safe
@@ -161,12 +164,12 @@ void Person::calculate_covid(Graph graph_instance){ // called at the end of each
         }
         float mask_factor = (neighbor.first.wears_mask==true&&(covid_factor==0.5 || covid_factor==1))?0.35:1.0;
         weighted_probs*=neighbor.second*mask_factor*covid_factor;
+        std::cout << "Checking neighbor " << neighbor.first.bu_id << " for person " << bu_id << " in calculate_covid: connection strength = " << neighbor.second << ", covid_factor = " << covid_factor << ", mask_factor = " << mask_factor << ", weighted_probs = " << weighted_probs << std::endl;
     }
-    std::cout << "checkpoint 3" << std::endl;
+    std::cout << "weighted_probs = " << weighted_probs << " for person " << bu_id << std::endl;
     float rand_covid_die = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
     if(weighted_probs<=rand_covid_die){
         covid_state[1] = 1; // the person gets infected with a chance of product of weighted_probs
     }
-    std::cout << "Made it to the end of calculate_covid()" << std::endl;
 };
 
