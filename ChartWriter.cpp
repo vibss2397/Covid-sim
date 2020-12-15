@@ -7,7 +7,6 @@
 #include "TestingDatabase.h"
 #include "ChartWriter.hpp"
 
-
 ChartWriter::ChartWriter(int numPeople)
 {
 	for (int i = 0; i < 5; i++)
@@ -22,7 +21,7 @@ ChartWriter::ChartWriter(int numPeople)
 	}
 }
 
-// Remove generated files, and close open output streams
+///Remove generated files, and close open output streams
 void ChartWriter::cleanup()
 {
 	for (int i = 0; i < 5; i++)
@@ -37,7 +36,7 @@ void ChartWriter::cleanup()
 	}
 }
 
-// Attempt to open the HTML viewer in the user's default browser
+///Attempt to open the HTML viewer in the user's default browser
 void ChartWriter::openWebpage()
 {
 	#ifdef _WIN32
@@ -57,8 +56,8 @@ void ChartWriter::openWebpage()
  */
 void ChartWriter::updateFromData(float time, std::vector<Person*> people, int num_people, TestingDatabase testingDatabase)
 {
-	// Write new output to the .dat files used in graph creation
-	// Reset all counters to 0
+	///Write new output to the .dat files used in graph creation
+	///Reset all counters to 0
 	for (int i = 0; i < 5; i++)
 	{
 		healthyCounts[i] = 0;
@@ -71,7 +70,7 @@ void ChartWriter::updateFromData(float time, std::vector<Person*> people, int nu
 	for (int i = 0; i < num_people; i++)
 	{
 		Person *person = people[i];
-		// Collect data for covid state graph(s)
+		///Collect data for covid state graph(s)
 		int16_t state = person->covid_state[0];
 		if (state == 0)
 		{
@@ -93,8 +92,8 @@ void ChartWriter::updateFromData(float time, std::vector<Person*> people, int nu
 			deadCounts[4]++;
 			deadCounts[person->university_status]++;
 		}
-		// Collect data for covid tests graph(s)
-		// Note: exclude "tests" from dead people
+		///Collect data for covid tests graph(s)
+		///Note: exclude "tests" from dead people
 		int nextTestIndex = testingDatabase.test_num[i];
 		if (nextTestIndex > lastKnownTestIndex[i] && person->covid_state[0] != -1)
 		{
@@ -125,14 +124,14 @@ void ChartWriter::updateFromData(float time, std::vector<Person*> people, int nu
  */
 void ChartWriter::writeAllCharts()
 {
-	// Generate group graphs using gnuplot
+	///Generate group graphs using gnuplot
 	for (int i = 0; i < 5; i++)
 	{
 		writeStatusGraph("covid-status-results-group-" + std::to_string(i) + ".dat", &covidStatusByGroupFiles[i], i, CHART_UNIVERISTY_STATUS_NICE_NAMES[i]);
 		writeTestsGraph("covid-tests-results-group-" + std::to_string(i) + ".dat", &covidTestsByGroupFiles[i], i, CHART_UNIVERISTY_STATUS_NICE_NAMES[i]);
 	}
-	// Generate all groups (separate) graphs using gnuplot
-	// [Yes, these commands could be built-up programmatically, but hard-coding them is easier.]
+	///Generate all groups (separate) graphs using gnuplot
+	///[Yes, these commands could be built-up programmatically, but hard-coding them is easier.]
 	std::string statusGraphCommand = "gnuplot -e \""
 										"set terminal pngcairo size " + std::to_string(CHART_WIDTH) + "," + std::to_string(CHART_HEIGHT) + " background rgb '#E0E0E0' truecolor;"
 										"set output 'covid-status-graph-" + CHART_UNIVERSITY_STATUS_SHORT_NAMES[5] + ".png';"

@@ -2,6 +2,11 @@
 \label{classChartWriter}\index{ChartWriter@{ChartWriter}}
 
 
+Class that handles collecting information from the testing database / person instances and writing them to line graphs / stacked bar graphs For an additional interface to view the output images, see Chart\+Viewer.\+html.  
+
+
+
+
 {\ttfamily \#include $<$Chart\+Writer.\+hpp$>$}
 
 \doxysubsection*{Public Member Functions}
@@ -10,9 +15,9 @@
 \mbox{\hyperlink{classChartWriter_a3d19a558ab60bd2e95426ddac20bcf50}{Chart\+Writer}} (int num\+People)
 \item 
 void \mbox{\hyperlink{classChartWriter_ab8a1a0d2f779e41cc280752c93a540e5}{cleanup}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Remove generated files, and close open output streams. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classChartWriter_a23640e091ef8670e2428aa693ccf749b}{open\+Webpage}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Attempt to open the H\+T\+ML viewer in the user\textquotesingle{}s default browser. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classChartWriter_a2ac1c7a3fccd920ef032b26446bce6f7}{update\+From\+Data}} (float time, std\+::vector$<$ \mbox{\hyperlink{classPerson}{Person}} $\ast$ $>$ people, int num\+\_\+people, \mbox{\hyperlink{classTestingDatabase}{Testing\+Database}} testing\+Database)
 \begin{DoxyCompactList}\small\item\em Update the data files from a given timestamp, people array, and testing database. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classChartWriter_a9d2131042a7094bd1eb6a3dacf2b4f82}{write\+All\+Charts}} ()
@@ -25,15 +30,15 @@ void \mbox{\hyperlink{classChartWriter_aa926710d8444f99c88ce23abb1b92f5e}{write\
 \begin{DoxyCompactItemize}
 \item 
 const int \mbox{\hyperlink{classChartWriter_a0000344a1994b656b9a351e5b4b30d5d}{C\+H\+A\+R\+T\+\_\+\+W\+I\+D\+TH}} = 1200
-\item 
+\begin{DoxyCompactList}\small\item\em Constants. \end{DoxyCompactList}\item 
 const int \mbox{\hyperlink{classChartWriter_a6024566a7284778ce0ffd048c6a6bf33}{C\+H\+A\+R\+T\+\_\+\+H\+E\+I\+G\+HT}} = 600
 \item 
 const std\+::string \mbox{\hyperlink{classChartWriter_a69684817a9cfd024e987432cc6a6283d}{C\+H\+A\+R\+T\+\_\+\+U\+N\+I\+V\+E\+R\+I\+S\+T\+Y\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+N\+I\+C\+E\+\_\+\+N\+A\+M\+ES}} \mbox{[}5\mbox{]}
-\item 
+\begin{DoxyCompactList}\small\item\em Note\+: there needs to be one more entry then the number of university statuses here, the actual value will be unused. \end{DoxyCompactList}\item 
 const std\+::string \mbox{\hyperlink{classChartWriter_a582beff3f159e70cfed9b3e341645bcb}{C\+H\+A\+R\+T\+\_\+\+U\+N\+I\+V\+E\+R\+S\+I\+T\+Y\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+H\+O\+R\+T\+\_\+\+N\+A\+M\+ES}} \mbox{[}6\mbox{]}
 \item 
 int \mbox{\hyperlink{classChartWriter_abdbe2b415abc7c827e830430168ae341}{healthy\+Counts}} \mbox{[}5\mbox{]}
-\item 
+\begin{DoxyCompactList}\small\item\em Metrics to calculate, stored by university\+\_\+status, where the last index stores stats on everyone. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classChartWriter_a11325712a101c93a24e6d09bc4426756}{infected\+Counts}} \mbox{[}5\mbox{]}
 \item 
 int \mbox{\hyperlink{classChartWriter_a354e2b434b0c9607c9850d85f33b409d}{recovered\+Counts}} \mbox{[}5\mbox{]}
@@ -45,6 +50,9 @@ int \mbox{\hyperlink{classChartWriter_a7b755c07178838ca963edaf37203027a}{positiv
 int \mbox{\hyperlink{classChartWriter_ab735b8791428308744c396e1d0928d99}{negative\+Test\+Counts}} \mbox{[}5\mbox{]}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Class that handles collecting information from the testing database / person instances and writing them to line graphs / stacked bar graphs For an additional interface to view the output images, see Chart\+Viewer.\+html. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classChartWriter_a3d19a558ab60bd2e95426ddac20bcf50}\label{classChartWriter_a3d19a558ab60bd2e95426ddac20bcf50}} 
@@ -62,11 +70,19 @@ int \mbox{\hyperlink{classChartWriter_ab735b8791428308744c396e1d0928d99}{negativ
 \doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
 {\footnotesize\ttfamily void Chart\+Writer\+::cleanup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Remove generated files, and close open output streams. 
+
 \mbox{\Hypertarget{classChartWriter_a23640e091ef8670e2428aa693ccf749b}\label{classChartWriter_a23640e091ef8670e2428aa693ccf749b}} 
 \index{ChartWriter@{ChartWriter}!openWebpage@{openWebpage}}
 \index{openWebpage@{openWebpage}!ChartWriter@{ChartWriter}}
 \doxysubsubsection{\texorpdfstring{openWebpage()}{openWebpage()}}
 {\footnotesize\ttfamily void Chart\+Writer\+::open\+Webpage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Attempt to open the H\+T\+ML viewer in the user\textquotesingle{}s default browser. 
 
 \mbox{\Hypertarget{classChartWriter_a2ac1c7a3fccd920ef032b26446bce6f7}\label{classChartWriter_a2ac1c7a3fccd920ef032b26446bce6f7}} 
 \index{ChartWriter@{ChartWriter}!updateFromData@{updateFromData}}
@@ -89,7 +105,11 @@ Update the data files from a given timestamp, people array, and testing database
 {\em testing\+Database} & \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classChartWriter_a9d2131042a7094bd1eb6a3dacf2b4f82}\label{classChartWriter_a9d2131042a7094bd1eb6a3dacf2b4f82}} 
+Write new output to the .dat files used in graph creation Reset all counters to 0
+
+Collect data for covid state graph(s)
+
+Collect data for covid tests graph(s) Note\+: exclude \char`\"{}tests\char`\"{} from dead people\mbox{\Hypertarget{classChartWriter_a9d2131042a7094bd1eb6a3dacf2b4f82}\label{classChartWriter_a9d2131042a7094bd1eb6a3dacf2b4f82}} 
 \index{ChartWriter@{ChartWriter}!writeAllCharts@{writeAllCharts}}
 \index{writeAllCharts@{writeAllCharts}!ChartWriter@{ChartWriter}}
 \doxysubsubsection{\texorpdfstring{writeAllCharts()}{writeAllCharts()}}
@@ -99,7 +119,9 @@ Update the data files from a given timestamp, people array, and testing database
 
 Generate image files from the intermediate data files. 
 
-\mbox{\Hypertarget{classChartWriter_a457db17135d5801243ee39766c4a3f06}\label{classChartWriter_a457db17135d5801243ee39766c4a3f06}} 
+Generate group graphs using gnuplot
+
+Generate all groups (separate) graphs using gnuplot \mbox{[}Yes, these commands could be built-\/up programmatically, but hard-\/coding them is easier.\mbox{]}\mbox{\Hypertarget{classChartWriter_a457db17135d5801243ee39766c4a3f06}\label{classChartWriter_a457db17135d5801243ee39766c4a3f06}} 
 \index{ChartWriter@{ChartWriter}!writeStatusGraph@{writeStatusGraph}}
 \index{writeStatusGraph@{writeStatusGraph}!ChartWriter@{ChartWriter}}
 \doxysubsubsection{\texorpdfstring{writeStatusGraph()}{writeStatusGraph()}}
@@ -167,6 +189,10 @@ Write a single stacked bar graph of test results over time.
 \DoxyCodeLine{        \}}
 
 \end{DoxyCode}
+
+
+Note\+: there needs to be one more entry then the number of university statuses here, the actual value will be unused. 
+
 \mbox{\Hypertarget{classChartWriter_a582beff3f159e70cfed9b3e341645bcb}\label{classChartWriter_a582beff3f159e70cfed9b3e341645bcb}} 
 \index{ChartWriter@{ChartWriter}!CHART\_UNIVERSITY\_STATUS\_SHORT\_NAMES@{CHART\_UNIVERSITY\_STATUS\_SHORT\_NAMES}}
 \index{CHART\_UNIVERSITY\_STATUS\_SHORT\_NAMES@{CHART\_UNIVERSITY\_STATUS\_SHORT\_NAMES}!ChartWriter@{ChartWriter}}
@@ -191,6 +217,10 @@ Write a single stacked bar graph of test results over time.
 \doxysubsubsection{\texorpdfstring{CHART\_WIDTH}{CHART\_WIDTH}}
 {\footnotesize\ttfamily const int Chart\+Writer\+::\+C\+H\+A\+R\+T\+\_\+\+W\+I\+D\+TH = 1200}
 
+
+
+Constants. 
+
 \mbox{\Hypertarget{classChartWriter_a6adb79c620ccf3bb27955d8620353604}\label{classChartWriter_a6adb79c620ccf3bb27955d8620353604}} 
 \index{ChartWriter@{ChartWriter}!deadCounts@{deadCounts}}
 \index{deadCounts@{deadCounts}!ChartWriter@{ChartWriter}}
@@ -202,6 +232,10 @@ Write a single stacked bar graph of test results over time.
 \index{healthyCounts@{healthyCounts}!ChartWriter@{ChartWriter}}
 \doxysubsubsection{\texorpdfstring{healthyCounts}{healthyCounts}}
 {\footnotesize\ttfamily int Chart\+Writer\+::healthy\+Counts\mbox{[}5\mbox{]}}
+
+
+
+Metrics to calculate, stored by university\+\_\+status, where the last index stores stats on everyone. 
 
 \mbox{\Hypertarget{classChartWriter_a11325712a101c93a24e6d09bc4426756}\label{classChartWriter_a11325712a101c93a24e6d09bc4426756}} 
 \index{ChartWriter@{ChartWriter}!infectedCounts@{infectedCounts}}

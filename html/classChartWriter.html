@@ -101,6 +101,9 @@ $(document).ready(function(){initNavTree('classChartWriter.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 
+<p>Class that handles collecting information from the testing database / person instances and writing them to line graphs / stacked bar graphs For an additional interface to view the output images, see ChartViewer.html.  
+ <a href="classChartWriter.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ChartWriter_8hpp_source.html">ChartWriter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -108,8 +111,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3d19a558ab60bd2e95426ddac20bcf50"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#a3d19a558ab60bd2e95426ddac20bcf50">ChartWriter</a> (int numPeople)</td></tr>
 <tr class="separator:a3d19a558ab60bd2e95426ddac20bcf50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8a1a0d2f779e41cc280752c93a540e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#ab8a1a0d2f779e41cc280752c93a540e5">cleanup</a> ()</td></tr>
+<tr class="memdesc:ab8a1a0d2f779e41cc280752c93a540e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove generated files, and close open output streams.  <a href="classChartWriter.html#ab8a1a0d2f779e41cc280752c93a540e5">More...</a><br /></td></tr>
 <tr class="separator:ab8a1a0d2f779e41cc280752c93a540e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23640e091ef8670e2428aa693ccf749b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#a23640e091ef8670e2428aa693ccf749b">openWebpage</a> ()</td></tr>
+<tr class="memdesc:a23640e091ef8670e2428aa693ccf749b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempt to open the HTML viewer in the user's default browser.  <a href="classChartWriter.html#a23640e091ef8670e2428aa693ccf749b">More...</a><br /></td></tr>
 <tr class="separator:a23640e091ef8670e2428aa693ccf749b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ac1c7a3fccd920ef032b26446bce6f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#a2ac1c7a3fccd920ef032b26446bce6f7">updateFromData</a> (float time, std::vector&lt; <a class="el" href="classPerson.html">Person</a> * &gt; people, int num_people, <a class="el" href="classTestingDatabase.html">TestingDatabase</a> testingDatabase)</td></tr>
 <tr class="memdesc:a2ac1c7a3fccd920ef032b26446bce6f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the data files from a given timestamp, people array, and testing database.  <a href="classChartWriter.html#a2ac1c7a3fccd920ef032b26446bce6f7">More...</a><br /></td></tr>
@@ -127,14 +132,17 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a0000344a1994b656b9a351e5b4b30d5d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#a0000344a1994b656b9a351e5b4b30d5d">CHART_WIDTH</a> = 1200</td></tr>
+<tr class="memdesc:a0000344a1994b656b9a351e5b4b30d5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constants.  <a href="classChartWriter.html#a0000344a1994b656b9a351e5b4b30d5d">More...</a><br /></td></tr>
 <tr class="separator:a0000344a1994b656b9a351e5b4b30d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6024566a7284778ce0ffd048c6a6bf33"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#a6024566a7284778ce0ffd048c6a6bf33">CHART_HEIGHT</a> = 600</td></tr>
 <tr class="separator:a6024566a7284778ce0ffd048c6a6bf33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69684817a9cfd024e987432cc6a6283d"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#a69684817a9cfd024e987432cc6a6283d">CHART_UNIVERISTY_STATUS_NICE_NAMES</a> [5]</td></tr>
+<tr class="memdesc:a69684817a9cfd024e987432cc6a6283d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Note: there needs to be one more entry then the number of university statuses here, the actual value will be unused.  <a href="classChartWriter.html#a69684817a9cfd024e987432cc6a6283d">More...</a><br /></td></tr>
 <tr class="separator:a69684817a9cfd024e987432cc6a6283d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a582beff3f159e70cfed9b3e341645bcb"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#a582beff3f159e70cfed9b3e341645bcb">CHART_UNIVERSITY_STATUS_SHORT_NAMES</a> [6]</td></tr>
 <tr class="separator:a582beff3f159e70cfed9b3e341645bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdbe2b415abc7c827e830430168ae341"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#abdbe2b415abc7c827e830430168ae341">healthyCounts</a> [5]</td></tr>
+<tr class="memdesc:abdbe2b415abc7c827e830430168ae341"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metrics to calculate, stored by university_status, where the last index stores stats on everyone.  <a href="classChartWriter.html#abdbe2b415abc7c827e830430168ae341">More...</a><br /></td></tr>
 <tr class="separator:abdbe2b415abc7c827e830430168ae341"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11325712a101c93a24e6d09bc4426756"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#a11325712a101c93a24e6d09bc4426756">infectedCounts</a> [5]</td></tr>
 <tr class="separator:a11325712a101c93a24e6d09bc4426756"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,7 +155,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ab735b8791428308744c396e1d0928d99"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChartWriter.html#ab735b8791428308744c396e1d0928d99">negativeTestCounts</a> [5]</td></tr>
 <tr class="separator:ab735b8791428308744c396e1d0928d99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class that handles collecting information from the testing database / person instances and writing them to line graphs / stacked bar graphs For an additional interface to view the output images, see ChartViewer.html. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3d19a558ab60bd2e95426ddac20bcf50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3d19a558ab60bd2e95426ddac20bcf50">&#9670;&nbsp;</a></span>ChartWriter()</h2>
 
@@ -182,6 +192,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Remove generated files, and close open output streams. </p>
+
 </div>
 </div>
 <a id="a23640e091ef8670e2428aa693ccf749b"></a>
@@ -198,6 +210,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Attempt to open the HTML viewer in the user's default browser. </p>
 
 </div>
 </div>
@@ -249,6 +263,9 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<p>Write new output to the .dat files used in graph creation Reset all counters to 0</p>
+<p>Collect data for covid state graph(s)</p>
+<p>Collect data for covid tests graph(s) Note: exclude "tests" from dead people</p>
 
 </div>
 </div>
@@ -268,6 +285,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Generate image files from the intermediate data files. </p>
+<p>Generate group graphs using gnuplot</p>
+<p>Generate all groups (separate) graphs using gnuplot [Yes, these commands could be built-up programmatically, but hard-coding them is easier.]</p>
 
 </div>
 </div>
@@ -407,6 +426,8 @@ Public Attributes</h2></td></tr>
 <div class="line">            std::string(<span class="stringliteral">&quot;&quot;</span>)</div>
 <div class="line">        }</div>
 </div><!-- fragment -->
+<p>Note: there needs to be one more entry then the number of university statuses here, the actual value will be unused. </p>
+
 </div>
 </div>
 <a id="a582beff3f159e70cfed9b3e341645bcb"></a>
@@ -443,6 +464,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constants. </p>
+
 </div>
 </div>
 <a id="a6adb79c620ccf3bb27955d8620353604"></a>
@@ -470,6 +493,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Metrics to calculate, stored by university_status, where the last index stores stats on everyone. </p>
 
 </div>
 </div>

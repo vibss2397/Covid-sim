@@ -2,27 +2,35 @@
 \label{classTestingDatabase}\index{TestingDatabase@{TestingDatabase}}
 
 
+This class models a rapid antigen test; It is called by an instance of the \mbox{\hyperlink{classPerson}{Person}} class and will return a test result based on that person’s C\+O\+V\+ID status (eg. C\+O\+V\+I\+D-\/free, infected, symptomatic, quarantined, etc.).  
+
+
+
+
 {\ttfamily \#include $<$Testing\+Database.\+h$>$}
 
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classTestingDatabase_a5b015092fc759d26cf4bbf0d140c7ded}{Testing\+Database}} (int n\+\_\+nodes, int m\+\_\+tests)
-\begin{DoxyCompactList}\small\item\em Construct a new Testing Database\+:\+: Testing Database object, A class which represents a database of test results. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classTestingDatabase_a205916de88364f0eddb0d3f704c828bb}{$\sim$\+Testing\+Database}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classTestingDatabase_a7d799e529662d93bb848f455f0e6ab15}{test\+\_\+node}} (int bu\+\_\+id, int person\+\_\+state)
 \item 
 void \mbox{\hyperlink{classTestingDatabase_aeb7f2c0598147e7e2055a1dd4348a6be}{print\+\_\+results}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Helper function to check that the results vectors are being updated. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ std\+::vector$<$ bool $>$ $>$ \mbox{\hyperlink{classTestingDatabase_a2811d00c840c48095db4bde48cf97f1e}{results}}
-\item 
+\begin{DoxyCompactList}\small\item\em List of list of booleans representing tests results for each node. \end{DoxyCompactList}\item 
 std\+::vector$<$ int $>$ \mbox{\hyperlink{classTestingDatabase_a4c934b9aacf2d9f30cf0c54e362855af}{test\+\_\+num}}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+This class models a rapid antigen test; It is called by an instance of the \mbox{\hyperlink{classPerson}{Person}} class and will return a test result based on that person’s C\+O\+V\+ID status (eg. C\+O\+V\+I\+D-\/free, infected, symptomatic, quarantined, etc.). 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classTestingDatabase_a5b015092fc759d26cf4bbf0d140c7ded}\label{classTestingDatabase_a5b015092fc759d26cf4bbf0d140c7ded}} 
@@ -33,7 +41,9 @@ std\+::vector$<$ int $>$ \mbox{\hyperlink{classTestingDatabase_a4c934b9aacf2d9f3
 
 
 
-Construct a new Testing Database\+:\+: Testing Database object, A class which represents a database of test results. 
+Constructor. 
+
+Construct a new Testing Database\+:\+: Testing Database object, A class which represents a database of test results.
 
 
 \begin{DoxyParams}{Parameters}
@@ -50,6 +60,10 @@ Construct a new Testing Database\+:\+: Testing Database object, A class which re
 
 
 
+Destructor. 
+
+
+
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classTestingDatabase_aeb7f2c0598147e7e2055a1dd4348a6be}\label{classTestingDatabase_aeb7f2c0598147e7e2055a1dd4348a6be}} 
 \index{TestingDatabase@{TestingDatabase}!print\_results@{print\_results}}
@@ -57,13 +71,17 @@ Construct a new Testing Database\+:\+: Testing Database object, A class which re
 \doxysubsubsection{\texorpdfstring{print\_results()}{print\_results()}}
 {\footnotesize\ttfamily void Testing\+Database\+::print\+\_\+results (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Helper function to check that the results vectors are being updated. 
+
 \mbox{\Hypertarget{classTestingDatabase_a7d799e529662d93bb848f455f0e6ab15}\label{classTestingDatabase_a7d799e529662d93bb848f455f0e6ab15}} 
 \index{TestingDatabase@{TestingDatabase}!test\_node@{test\_node}}
 \index{test\_node@{test\_node}!TestingDatabase@{TestingDatabase}}
 \doxysubsubsection{\texorpdfstring{test\_node()}{test\_node()}}
 {\footnotesize\ttfamily bool Testing\+Database\+::test\+\_\+node (\begin{DoxyParamCaption}\item[{int}]{bu\+\_\+id,  }\item[{int}]{person\+\_\+state }\end{DoxyParamCaption})}
 
-
+Function called by the Simulator class to run tests on all nodes void run\+\_\+tests(int iteration); 
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{classTestingDatabase_a2811d00c840c48095db4bde48cf97f1e}\label{classTestingDatabase_a2811d00c840c48095db4bde48cf97f1e}} 
@@ -72,13 +90,17 @@ Construct a new Testing Database\+:\+: Testing Database object, A class which re
 \doxysubsubsection{\texorpdfstring{results}{results}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$bool$>$ $>$ Testing\+Database\+::results}
 
+
+
+List of list of booleans representing tests results for each node. 
+
 \mbox{\Hypertarget{classTestingDatabase_a4c934b9aacf2d9f30cf0c54e362855af}\label{classTestingDatabase_a4c934b9aacf2d9f30cf0c54e362855af}} 
 \index{TestingDatabase@{TestingDatabase}!test\_num@{test\_num}}
 \index{test\_num@{test\_num}!TestingDatabase@{TestingDatabase}}
 \doxysubsubsection{\texorpdfstring{test\_num}{test\_num}}
 {\footnotesize\ttfamily std\+::vector$<$int$>$ Testing\+Database\+::test\+\_\+num}
 
-
+List of ints representing which index to store a \mbox{\hyperlink{classPerson}{Person}}\textquotesingle{}s next test at within the results matrix. I did this to avoid using linked lists for the results. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

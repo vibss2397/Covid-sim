@@ -101,6 +101,9 @@ $(document).ready(function(){initNavTree('classGraph.html',''); initResizable();
 </div><!--header-->
 <div class="contents">
 
+<p>Responsible for tracking connections between people and quarantine, generates the network of connections between people.  
+ <a href="classGraph.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Graph_8hpp_source.html">Graph.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -130,6 +133,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:abd9177ecff2f15316a51d7d3e251693f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unordered_map&lt; int, float &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#abd9177ecff2f15316a51d7d3e251693f">connectionGraph</a></td></tr>
+<tr class="memdesc:abd9177ecff2f15316a51d7d3e251693f"><td class="mdescLeft">&#160;</td><td class="mdescRight">connections and strength between people  <a href="classGraph.html#abd9177ecff2f15316a51d7d3e251693f">More...</a><br /></td></tr>
 <tr class="separator:abd9177ecff2f15316a51d7d3e251693f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3db12d7f8327a6717fd161d694e43c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#ad3db12d7f8327a6717fd161d694e43c0">numNodes</a></td></tr>
 <tr class="separator:ad3db12d7f8327a6717fd161d694e43c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,7 +142,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:adf0d211a620437576ea5660afaa7aea0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classPerson.html">Person</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#adf0d211a620437576ea5660afaa7aea0">population</a></td></tr>
 <tr class="separator:adf0d211a620437576ea5660afaa7aea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Responsible for tracking connections between people and quarantine, generates the network of connections between people. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6e4288fb71dbf5163154f8de52f0d985"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6e4288fb71dbf5163154f8de52f0d985">&#9670;&nbsp;</a></span>Graph()</h2>
 
@@ -200,6 +206,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>vector shouldn't be copied when returning here via RVO make sure it doesn't copy </p>
 
 </div>
 </div>
@@ -239,6 +246,8 @@ Public Attributes</h2></td></tr>
 
 <p>Calculate a new link stength according to the power law distribution. </p>
 <dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+<p>power law distribution range x0 = 0.1, x1 = 1, n = -2.5</p>
+<p>x = [y * (x1^(n+1) - x0^(n+1)) + x0^(n+1)]^(1/(n+1)) Source: <a href="https://mathworld.wolfram.com/RandomNumber.html">https://mathworld.wolfram.com/RandomNumber.html</a></p>
 
 </div>
 </div>
@@ -327,6 +336,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>connections and strength between people </p>
 
 </div>
 </div>

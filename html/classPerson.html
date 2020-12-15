@@ -101,6 +101,9 @@ $(document).ready(function(){initNavTree('classPerson.html',''); initResizable()
 </div><!--header-->
 <div class="contents">
 
+<p>Tracks the current state of any person and their health, also holds statistically relevant information with infection.  
+ <a href="classPerson.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Person_8hpp_source.html">Person.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -135,17 +138,22 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a765c6cde3efa230f481c265bfd212426"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPerson.html#a765c6cde3efa230f481c265bfd212426">age</a></td></tr>
 <tr class="separator:a765c6cde3efa230f481c265bfd212426"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab50459b3a98c4762f2348da038ce0c5c"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPerson.html#ab50459b3a98c4762f2348da038ce0c5c">covid_state</a> [2]</td></tr>
+<tr class="memdesc:ab50459b3a98c4762f2348da038ce0c5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">0: safe(potential), 1 : infected, 2 : symptomatic, 3 : quarantine, 4: recovery, -1 : dead  <a href="classPerson.html#ab50459b3a98c4762f2348da038ce0c5c">More...</a><br /></td></tr>
 <tr class="separator:ab50459b3a98c4762f2348da038ce0c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af776ebd3413d2a8777ad198c48eb5e4f"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPerson.html#af776ebd3413d2a8777ad198c48eb5e4f">wears_mask</a></td></tr>
+<tr class="memdesc:af776ebd3413d2a8777ad198c48eb5e4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">0 : off, 1 : on  <a href="classPerson.html#af776ebd3413d2a8777ad198c48eb5e4f">More...</a><br /></td></tr>
 <tr class="separator:af776ebd3413d2a8777ad198c48eb5e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5e3cdedd4f0e065b80ba6041fe8a767"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPerson.html#af5e3cdedd4f0e065b80ba6041fe8a767">university_status</a></td></tr>
+<tr class="memdesc:af5e3cdedd4f0e065b80ba6041fe8a767"><td class="mdescLeft">&#160;</td><td class="mdescRight">0 : undergrad, 1: grad, 2 : faculty, 3 : other staff  <a href="classPerson.html#af5e3cdedd4f0e065b80ba6041fe8a767">More...</a><br /></td></tr>
 <tr class="separator:af5e3cdedd4f0e065b80ba6041fe8a767"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa290c9314f0541351956abb71d7c0842"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPerson.html#aa290c9314f0541351956abb71d7c0842">covid_counter</a></td></tr>
 <tr class="separator:aa290c9314f0541351956abb71d7c0842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36fd8cad02f7ef6c114d8a9bda9743dd"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPerson.html#a36fd8cad02f7ef6c114d8a9bda9743dd">covid_mu_factor</a></td></tr>
 <tr class="separator:a36fd8cad02f7ef6c114d8a9bda9743dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Tracks the current state of any person and their health, also holds statistically relevant information with infection. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1f8a0907d4c33fc23a827ef2873180c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1f8a0907d4c33fc23a827ef2873180c7">&#9670;&nbsp;</a></span>Person()</h2>
 
@@ -418,6 +426,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>0: safe(potential), 1 : infected, 2 : symptomatic, 3 : quarantine, 4: recovery, -1 : dead </p>
+
 </div>
 </div>
 <a id="af5e3cdedd4f0e065b80ba6041fe8a767"></a>
@@ -432,6 +442,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>0 : undergrad, 1: grad, 2 : faculty, 3 : other staff </p>
+
 </div>
 </div>
 <a id="af776ebd3413d2a8777ad198c48eb5e4f"></a>
@@ -445,6 +457,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>0 : off, 1 : on </p>
 
 </div>
 </div>

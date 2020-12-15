@@ -101,50 +101,40 @@ $(document).ready(function(){initNavTree('TestingDatabase_8h_source.html',''); i
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classTestingDatabase.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTestingDatabase.html">TestingDatabase</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">int</span> n_nodes;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">int</span> m_tests;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">float</span> symptomatic_sensitivity;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">float</span> specificity;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">float</span> asymptomatic_sensitivity;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classTestingDatabase.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTestingDatabase.html">TestingDatabase</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">int</span> n_nodes;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">int</span> m_tests;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="comment">// Constructor</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classTestingDatabase.html#a5b015092fc759d26cf4bbf0d140c7ded">TestingDatabase</a>(<span class="keywordtype">int</span> n_nodes, <span class="keywordtype">int</span> m_tests);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">float</span> symptomatic_sensitivity;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">float</span> specificity;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">float</span> asymptomatic_sensitivity;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">// Destructor</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classTestingDatabase.html#a205916de88364f0eddb0d3f704c828bb">~TestingDatabase</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">// Function called by the Simulator class to run tests on all nodes</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">// void run_tests(int iteration);</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// Function to be called by the Simulator class based on testing frequency</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classTestingDatabase.html#a7d799e529662d93bb848f455f0e6ab15">test_node</a>(<span class="keywordtype">int</span> bu_id, <span class="keywordtype">int</span> person_state);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// Helper function to check that the results vectors are being updated</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTestingDatabase.html#aeb7f2c0598147e7e2055a1dd4348a6be">print_results</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// List of list of booleans representing tests results for each node</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classTestingDatabase.html#a2811d00c840c48095db4bde48cf97f1e">   32</a></span>&#160;    std::vector&lt; std::vector&lt;bool&gt; &gt; <a class="code" href="classTestingDatabase.html#a2811d00c840c48095db4bde48cf97f1e">results</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">// List of ints representing which index to store a Person&#39;s next test</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// at within the results matrix. I did this to avoid using linked lists</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// for the results.</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classTestingDatabase.html#a4c934b9aacf2d9f30cf0c54e362855af">   37</a></span>&#160;    std::vector&lt;int&gt; <a class="code" href="classTestingDatabase.html#a4c934b9aacf2d9f30cf0c54e362855af">test_num</a>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classTestingDatabase.html#a5b015092fc759d26cf4bbf0d140c7ded">TestingDatabase</a>(<span class="keywordtype">int</span> n_nodes, <span class="keywordtype">int</span> m_tests);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classTestingDatabase.html#a205916de88364f0eddb0d3f704c828bb">~TestingDatabase</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classTestingDatabase.html#a7d799e529662d93bb848f455f0e6ab15">test_node</a>(<span class="keywordtype">int</span> bu_id, <span class="keywordtype">int</span> person_state);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTestingDatabase.html#aeb7f2c0598147e7e2055a1dd4348a6be">print_results</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classTestingDatabase.html#a2811d00c840c48095db4bde48cf97f1e">   36</a></span>&#160;    std::vector&lt; std::vector&lt;bool&gt; &gt; <a class="code" href="classTestingDatabase.html#a2811d00c840c48095db4bde48cf97f1e">results</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classTestingDatabase.html#a4c934b9aacf2d9f30cf0c54e362855af">   41</a></span>&#160;    std::vector&lt;int&gt; <a class="code" href="classTestingDatabase.html#a4c934b9aacf2d9f30cf0c54e362855af">test_num</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassTestingDatabase_html_a7d799e529662d93bb848f455f0e6ab15"><div class="ttname"><a href="classTestingDatabase.html#a7d799e529662d93bb848f455f0e6ab15">TestingDatabase::test_node</a></div><div class="ttdeci">bool test_node(int bu_id, int person_state)</div><div class="ttdef"><b>Definition:</b> TestingDatabase.cpp:51</div></div>
-<div class="ttc" id="aclassTestingDatabase_html_aeb7f2c0598147e7e2055a1dd4348a6be"><div class="ttname"><a href="classTestingDatabase.html#aeb7f2c0598147e7e2055a1dd4348a6be">TestingDatabase::print_results</a></div><div class="ttdeci">void print_results()</div><div class="ttdef"><b>Definition:</b> TestingDatabase.cpp:95</div></div>
-<div class="ttc" id="aclassTestingDatabase_html_a4c934b9aacf2d9f30cf0c54e362855af"><div class="ttname"><a href="classTestingDatabase.html#a4c934b9aacf2d9f30cf0c54e362855af">TestingDatabase::test_num</a></div><div class="ttdeci">std::vector&lt; int &gt; test_num</div><div class="ttdef"><b>Definition:</b> TestingDatabase.h:37</div></div>
-<div class="ttc" id="aclassTestingDatabase_html"><div class="ttname"><a href="classTestingDatabase.html">TestingDatabase</a></div><div class="ttdef"><b>Definition:</b> TestingDatabase.h:7</div></div>
-<div class="ttc" id="aclassTestingDatabase_html_a5b015092fc759d26cf4bbf0d140c7ded"><div class="ttname"><a href="classTestingDatabase.html#a5b015092fc759d26cf4bbf0d140c7ded">TestingDatabase::TestingDatabase</a></div><div class="ttdeci">TestingDatabase(int n_nodes, int m_tests)</div><div class="ttdoc">Construct a new Testing Database:: Testing Database object, A class which represents a database of te...</div><div class="ttdef"><b>Definition:</b> TestingDatabase.cpp:12</div></div>
-<div class="ttc" id="aclassTestingDatabase_html_a2811d00c840c48095db4bde48cf97f1e"><div class="ttname"><a href="classTestingDatabase.html#a2811d00c840c48095db4bde48cf97f1e">TestingDatabase::results</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; bool &gt; &gt; results</div><div class="ttdef"><b>Definition:</b> TestingDatabase.h:32</div></div>
-<div class="ttc" id="aclassTestingDatabase_html_a205916de88364f0eddb0d3f704c828bb"><div class="ttname"><a href="classTestingDatabase.html#a205916de88364f0eddb0d3f704c828bb">TestingDatabase::~TestingDatabase</a></div><div class="ttdeci">~TestingDatabase()</div><div class="ttdef"><b>Definition:</b> TestingDatabase.cpp:44</div></div>
+<div class="ttc" id="aclassTestingDatabase_html_aeb7f2c0598147e7e2055a1dd4348a6be"><div class="ttname"><a href="classTestingDatabase.html#aeb7f2c0598147e7e2055a1dd4348a6be">TestingDatabase::print_results</a></div><div class="ttdeci">void print_results()</div><div class="ttdoc">Helper function to check that the results vectors are being updated.</div><div class="ttdef"><b>Definition:</b> TestingDatabase.cpp:95</div></div>
+<div class="ttc" id="aclassTestingDatabase_html_a4c934b9aacf2d9f30cf0c54e362855af"><div class="ttname"><a href="classTestingDatabase.html#a4c934b9aacf2d9f30cf0c54e362855af">TestingDatabase::test_num</a></div><div class="ttdeci">std::vector&lt; int &gt; test_num</div><div class="ttdef"><b>Definition:</b> TestingDatabase.h:41</div></div>
+<div class="ttc" id="aclassTestingDatabase_html"><div class="ttname"><a href="classTestingDatabase.html">TestingDatabase</a></div><div class="ttdoc">This class models a rapid antigen test; It is called by an instance of the Person class and will retu...</div><div class="ttdef"><b>Definition:</b> TestingDatabase.h:11</div></div>
+<div class="ttc" id="aclassTestingDatabase_html_a5b015092fc759d26cf4bbf0d140c7ded"><div class="ttname"><a href="classTestingDatabase.html#a5b015092fc759d26cf4bbf0d140c7ded">TestingDatabase::TestingDatabase</a></div><div class="ttdeci">TestingDatabase(int n_nodes, int m_tests)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> TestingDatabase.cpp:12</div></div>
+<div class="ttc" id="aclassTestingDatabase_html_a2811d00c840c48095db4bde48cf97f1e"><div class="ttname"><a href="classTestingDatabase.html#a2811d00c840c48095db4bde48cf97f1e">TestingDatabase::results</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; bool &gt; &gt; results</div><div class="ttdoc">List of list of booleans representing tests results for each node.</div><div class="ttdef"><b>Definition:</b> TestingDatabase.h:36</div></div>
+<div class="ttc" id="aclassTestingDatabase_html_a205916de88364f0eddb0d3f704c828bb"><div class="ttname"><a href="classTestingDatabase.html#a205916de88364f0eddb0d3f704c828bb">TestingDatabase::~TestingDatabase</a></div><div class="ttdeci">~TestingDatabase()</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition:</b> TestingDatabase.cpp:44</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

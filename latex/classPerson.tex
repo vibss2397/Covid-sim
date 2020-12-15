@@ -2,6 +2,11 @@
 \label{classPerson}\index{Person@{Person}}
 
 
+Tracks the current state of any person and their health, also holds statistically relevant information with infection.  
+
+
+
+
 {\ttfamily \#include $<$Person.\+hpp$>$}
 
 \doxysubsection*{Public Member Functions}
@@ -33,16 +38,19 @@ int16\+\_\+t \mbox{\hyperlink{classPerson_a1151224d6b8eb7ac7724231c45e2a833}{bu\
 int16\+\_\+t \mbox{\hyperlink{classPerson_a765c6cde3efa230f481c265bfd212426}{age}}
 \item 
 int16\+\_\+t \mbox{\hyperlink{classPerson_ab50459b3a98c4762f2348da038ce0c5c}{covid\+\_\+state}} \mbox{[}2\mbox{]}
-\item 
+\begin{DoxyCompactList}\small\item\em 0\+: safe(potential), 1 \+: infected, 2 \+: symptomatic, 3 \+: quarantine, 4\+: recovery, -\/1 \+: dead \end{DoxyCompactList}\item 
 int16\+\_\+t \mbox{\hyperlink{classPerson_af776ebd3413d2a8777ad198c48eb5e4f}{wears\+\_\+mask}}
-\item 
+\begin{DoxyCompactList}\small\item\em 0 \+: off, 1 \+: on \end{DoxyCompactList}\item 
 int16\+\_\+t \mbox{\hyperlink{classPerson_af5e3cdedd4f0e065b80ba6041fe8a767}{university\+\_\+status}}
-\item 
+\begin{DoxyCompactList}\small\item\em 0 \+: undergrad, 1\+: grad, 2 \+: faculty, 3 \+: other staff \end{DoxyCompactList}\item 
 int16\+\_\+t \mbox{\hyperlink{classPerson_aa290c9314f0541351956abb71d7c0842}{covid\+\_\+counter}}
 \item 
 int16\+\_\+t \mbox{\hyperlink{classPerson_a36fd8cad02f7ef6c114d8a9bda9743dd}{covid\+\_\+mu\+\_\+factor}}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Tracks the current state of any person and their health, also holds statistically relevant information with infection. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classPerson_a1f8a0907d4c33fc23a827ef2873180c7}\label{classPerson_a1f8a0907d4c33fc23a827ef2873180c7}} 
@@ -162,17 +170,29 @@ called at the end of timestep. uses poisson distribution with lambda = covid\+\_
 \doxysubsubsection{\texorpdfstring{covid\_state}{covid\_state}}
 {\footnotesize\ttfamily int16\+\_\+t Person\+::covid\+\_\+state\mbox{[}2\mbox{]}}
 
+
+
+0\+: safe(potential), 1 \+: infected, 2 \+: symptomatic, 3 \+: quarantine, 4\+: recovery, -\/1 \+: dead 
+
 \mbox{\Hypertarget{classPerson_af5e3cdedd4f0e065b80ba6041fe8a767}\label{classPerson_af5e3cdedd4f0e065b80ba6041fe8a767}} 
 \index{Person@{Person}!university\_status@{university\_status}}
 \index{university\_status@{university\_status}!Person@{Person}}
 \doxysubsubsection{\texorpdfstring{university\_status}{university\_status}}
 {\footnotesize\ttfamily int16\+\_\+t Person\+::university\+\_\+status}
 
+
+
+0 \+: undergrad, 1\+: grad, 2 \+: faculty, 3 \+: other staff 
+
 \mbox{\Hypertarget{classPerson_af776ebd3413d2a8777ad198c48eb5e4f}\label{classPerson_af776ebd3413d2a8777ad198c48eb5e4f}} 
 \index{Person@{Person}!wears\_mask@{wears\_mask}}
 \index{wears\_mask@{wears\_mask}!Person@{Person}}
 \doxysubsubsection{\texorpdfstring{wears\_mask}{wears\_mask}}
 {\footnotesize\ttfamily int16\+\_\+t Person\+::wears\+\_\+mask}
+
+
+
+0 \+: off, 1 \+: on 
 
 
 
