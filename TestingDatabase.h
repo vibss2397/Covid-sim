@@ -12,14 +12,6 @@ class TestingDatabase
     float specificity;
     float asymptomatic_sensitivity;
 
-    // List of list of booleans representing tests results for each node
-    std::vector< std::vector<bool> > results;
-
-    // List of ints representing which index to store a Person's next test
-    // at within the results matrix. I did this to avoid using linked lists
-    // for the results.
-    std::vector<int> test_num;
-
 public:
     // Constructor
     TestingDatabase(int n_nodes, int m_tests);
@@ -35,6 +27,14 @@ public:
 
     // Helper function to check that the results vectors are being updated
     void print_results();
+
+    // List of list of booleans representing tests results for each node
+    std::vector< std::vector<bool> > results;
+
+    // List of ints representing which index to store a Person's next test
+    // at within the results matrix. I did this to avoid using linked lists
+    // for the results.
+    std::vector<int> test_num;
 };
 
 #endif

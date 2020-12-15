@@ -46,8 +46,10 @@ TestingDatabase::~TestingDatabase()
  * 0: safe(potential), 1 : infected, 2 : symptomatic, 3 : quarantine, 4: recovery, -1 : dead */
 bool TestingDatabase::test_node(int bu_id, int person_state)
 {
+    std::cout << "Made it to the start of test_node()" << std::endl;
     bool result;
     int test_num = this->test_num[bu_id];
+    std::cout << "Checkpoint 1" << std::endl;
 
     if (person_state <= 0) {
         // If the node is not infected, the PCR test is unlikely
@@ -58,10 +60,12 @@ bool TestingDatabase::test_node(int bu_id, int person_state)
         // Generate a random number and see if it's greater than the PCR test's sensitivity
         // Used the following as reference:
         // https://www.delftstack.com/howto/cpp/how-to-generate-random-float-number-in-cpp/
+        std::cout << "Checkpoint 1.1" << std::endl;
         std::random_device rd;
         std::default_random_engine eng(rd());
         std::uniform_real_distribution<> distr(0, 1);
         float random = distr(eng);
+        std::cout << "Checkpoint 1.2" << std::endl;
 
         if (person_state == 1) {
             // If person a person has just been infected, it's less likely
@@ -79,10 +83,13 @@ bool TestingDatabase::test_node(int bu_id, int person_state)
             }
         }
     }
+    std::cout << "Checkpoint 2" << std::endl;
 
     results[bu_id][test_num] = result;
+    std::cout << "Checkpoint 3" << std::endl;
     this->test_num[bu_id]++;
 
+    std::cout << "Made it to the end of test_node()" << std::endl;
     return result;
 
 }

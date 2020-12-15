@@ -1,6 +1,7 @@
 #include <math.h>
 #include<iostream>
 #include <utility>
+#include "Helper_Func.hpp"
 
 double factorial(int16_t n){
     // calculates n! = n*(n-1)*(n-2).....*1
