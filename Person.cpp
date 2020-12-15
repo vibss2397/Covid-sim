@@ -159,12 +159,12 @@ void Person::calculate_covid(Graph graph_instance){ // called at the end of each
         }
         float mask_factor = (neighbor.first->wears_mask==true&&(not_covid_factor==0.5 || not_covid_factor==0.1))?0.65:1.0;
         weighted_not_covid_probs*=neighbor.second*mask_factor*not_covid_factor;
-        std::cout << "weighted_not_probs:" << weighted_not_covid_probs << std::endl;
-        std::cout << "neighbor.second*mask_factor*not_covid_factor: " << (neighbor.second*mask_factor*not_covid_factor) << std::endl;
+        // std::cout << "weighted_not_probs:" << weighted_not_covid_probs << std::endl;
+        // std::cout << "neighbor.second*mask_factor*not_covid_factor: " << (neighbor.second*mask_factor*not_covid_factor) << std::endl;
     }
 
     float weighted_covid_probs = 1 - weighted_not_covid_probs;
-    std::cout << "🔴" << std::endl;
+    // std::cout << "🔴" << std::endl;
     float rand_covid_die = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
     if(weighted_covid_probs<=rand_covid_die && covid_state[0] == 0){
         covid_state[1] = 1; // the person gets infected with a chance of product of weighted_probs

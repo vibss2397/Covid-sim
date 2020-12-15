@@ -7,12 +7,12 @@
 #include "Graph.hpp"
 #include "ChartWriter.hpp"
 
-const int NUM_PERSONS = 160; //total people number
-const float SIM_DURATION = 120.0f; //how many units of time do we run the simulation for?
+const int NUM_PERSONS = 1000; //total people number
+const float SIM_DURATION = 200.0f; //how many units of time do we run the simulation for?
 const float SIM_RATE = 1.0f; //length of time between each time frame of the simulation
-const float CONNECTION_PROB = 0.15f; //the connection probability
-const int MASK_PROB = 50; //percentage of how many people wear mask on campus
-const float PERCENT_INFECTED_AT_START = 4;
+const float CONNECTION_PROB = 0.005f; //the connection probability
+const int MASK_PROB = 85; //percentage of how many people wear mask on campus
+const float PERCENT_INFECTED_AT_START = 1;
 
 int main(int argc, char* argv[])
 {
