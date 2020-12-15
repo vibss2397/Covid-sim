@@ -34,6 +34,14 @@ class ChartWriter
 			std::string("Staff"),
 			std::string("")
 		};
+        const std::string CHART_UNIVERSITY_STATUS_SHORT_NAMES[6] = {
+            std::string("undergrads"),
+            std::string("grads"),
+            std::string("faculty"),
+            std::string("staff"),
+            std::string("all-combined"),
+            std::string("all-separated")
+        };
 
         // Metrics to calculate, stored by university_status, where the last index stores stats on everyone
         int healthyCounts[5];
