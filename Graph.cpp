@@ -6,6 +6,7 @@
 #include "Graph.hpp"
 
 Graph::Graph(std::vector<Person>& worldPopulation, float p) {
+    connectionProb = p;
     population = std::ref(worldPopulation);
     numNodes = population.size();
     initialize_connection_graph();    
@@ -24,7 +25,7 @@ void Graph::initialize_connection_graph() {
             if (construct_link_successful()) {
                 //std::cout << "construct link successful " << std::endl;
                 float linkStrength = new_link_strength();
-                std::cout<<firstNode<<" "<<secondNode<<" "<<linkStrength<<std::endl;
+                // std::cout<<firstNode<<" "<<secondNode<<" "<<linkStrength<<std::endl;
                 connectionGraph[firstNode].insert({secondNode, linkStrength});
                 connectionGraph[secondNode].insert({firstNode, linkStrength});
             }
@@ -43,10 +44,9 @@ std::vector<std::pair<Person, float>> Graph::get_neighbors(int nodeId) {
     //     std::cout << element.first << " :: " << element.second << std::endl;
     // }
 
-    std::unordered_map<int, float>& nodeMap = connectionGraph[nodeId];
+    std::unordered_map<int, float>& nodeMap = connectionGraph[nodeId];;
     //std::cout << "node map size in get neighbors: " << nodeMap.size() << std::endl;
-
-    std::vector<std::pair<Person, float>> neighbors(nodeMap.size());
+    std::vector<std::pair<Person, float>> neighbors;
     for (auto keyPair : nodeMap) {
         if (keyPair.second > 0) {
             int neighborId = keyPair.first;
@@ -91,7 +91,8 @@ float Graph::new_link_strength() {
 }
 
 bool Graph::construct_link_successful() {
-    return uniform() < connectionProb;
+    float temp = uniform();
+    return temp<connectionProb;
 }
 
 float Graph::uniform() {
