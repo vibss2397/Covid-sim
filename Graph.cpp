@@ -22,8 +22,9 @@ void Graph::initialize_connection_graph() {
     for (int firstNode = 0; firstNode < numNodes; firstNode++) {
         for (int secondNode = firstNode + 1; secondNode < numNodes; secondNode++) {
             if (construct_link_successful()) {
+                //std::cout << "construct link successful " << std::endl;
                 float linkStrength = new_link_strength();
-                // std::cout<<firstNode<<" "<<secondNode<<" "<<linkStrength<<std::endl;
+                std::cout<<firstNode<<" "<<secondNode<<" "<<linkStrength<<std::endl;
                 connectionGraph[firstNode].insert({secondNode, linkStrength});
                 connectionGraph[secondNode].insert({firstNode, linkStrength});
             }
@@ -41,19 +42,18 @@ std::vector<std::pair<Person, float>> Graph::get_neighbors(int nodeId) {
     // {
     //     std::cout << element.first << " :: " << element.second << std::endl;
     // }
+
     std::unordered_map<int, float>& nodeMap = connectionGraph[nodeId];
-    std::cout << "Checkpoint 1" << std::endl;
-    // >>> The next 2 lines aren't working! nodeMap.size() either crashes OR returns a junk number... something isn't being allocated / accessed correctly here <<<
-    //std::cout << nodeMap.size() << std::endl;
+    //std::cout << "node map size in get neighbors: " << nodeMap.size() << std::endl;
+
     std::vector<std::pair<Person, float>> neighbors(nodeMap.size());
-    std::cout << "Checkpoint 2" << std::endl;
     for (auto keyPair : nodeMap) {
         if (keyPair.second > 0) {
             int neighborId = keyPair.first;
+            //std::cout << "get_neighbors read neighborId " << neighborId << " corresponding to person with bu id " << population[neighborId].bu_id << std::endl;
             neighbors.emplace_back(population[neighborId], keyPair.second);
         }
     }
-    std::cout << "Made it to the end of get_neighbors()" << std::endl;
     return neighbors;
 }
 
