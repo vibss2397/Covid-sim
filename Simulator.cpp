@@ -16,15 +16,12 @@ const float PERCENT_INFECTED_AT_START = 1;
 
 int main(int argc, char* argv[])
 {
-
-
     std::vector<Person*> people(NUM_PERSONS);
     // we should still working on the graph class
     int numTestsPerPerson = SIM_DURATION/SIM_RATE;
     TestingDatabase tb = TestingDatabase(NUM_PERSONS, numTestsPerPerson);
 	ChartWriter chartWriter(NUM_PERSONS);
     
-
     // Figure out who wears masks and who doesn’t
     int i;
     for (i = 0; i < NUM_PERSONS; i++)
@@ -46,11 +43,8 @@ int main(int argc, char* argv[])
     Graph g = Graph(people, CONNECTION_PROB);
 
     //#pragma omp barrier //wait until all threads are done
-
     float time = 0.0f; //current time
     while(time < SIM_DURATION){
-        
-        //TODO: parallelize this for loop
         int i;
         //update the states of each person for the current time frame
         #pragma omp parallel for shared (people, g) private (i) // uncomment this line works only comment it for testing!
@@ -66,15 +60,13 @@ int main(int argc, char* argv[])
             //update the testing database given the current state of this person (i.e. person.covid_state[1])
             if (people[i]->covid_state[0] != 4 && people[i]->covid_state[0] != -1)
                 bool testResult = tb.test_node(people[i]->bu_id, people[i]->covid_state[1]);
-
-        }
-                
+        }  
         // Update chart data
         chartWriter.updateFromData(time, people, NUM_PERSONS, tb);
-        
+
         // Print out covid state numbers
         std::cout << "Time: " << time << " / " << SIM_DURATION << "\tHealthy: " << chartWriter.healthyCounts[4] << "\tInfected: " << chartWriter.infectedCounts[4] << "\tRecovered: " << chartWriter.recoveredCounts[4] << "\tDead: " << chartWriter.deadCounts[4] << "\n";
-        
+
         time += SIM_RATE;
     }
 	
@@ -84,6 +76,5 @@ int main(int argc, char* argv[])
 	
 	// Open html viewer
 	chartWriter.openWebpage();
-
 }
 

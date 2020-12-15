@@ -47,7 +47,14 @@ void ChartWriter::openWebpage()
 	#endif
 }
 
-// Update the data files from a given timestamp, people array, and testing database
+/**
+ * @brief Update the data files from a given timestamp, people array, and testing database
+ * 
+ * @param time 
+ * @param people 
+ * @param num_people 
+ * @param testingDatabase 
+ */
 void ChartWriter::updateFromData(float time, std::vector<Person*> people, int num_people, TestingDatabase testingDatabase)
 {
 	// Write new output to the .dat files used in graph creation
@@ -112,7 +119,10 @@ void ChartWriter::updateFromData(float time, std::vector<Person*> people, int nu
 	}
 }
 
-// Generate image files from the intermediate data files
+/**
+ * @brief Generate image files from the intermediate data files
+ * 
+ */
 void ChartWriter::writeAllCharts()
 {
 	// Generate group graphs using gnuplot
@@ -174,7 +184,14 @@ void ChartWriter::writeAllCharts()
 	system(testsGraphCommand.c_str());
 }
 	
-// Write a single line graph of infection status counts over time
+/**
+ * @brief Write a single line graph of infection status counts over time
+ * 
+ * @param filename 
+ * @param file 
+ * @param groupNumber 
+ * @param groupName 
+ */
 void ChartWriter::writeStatusGraph(std::string filename, std::ofstream *file, int groupNumber, std::string groupName)
 {
 	if (file != NULL)
@@ -201,7 +218,14 @@ void ChartWriter::writeStatusGraph(std::string filename, std::ofstream *file, in
 	system(statusGraphCommand.c_str());
 }
 
-// Write a single stacked bar graph of test results over time
+/**
+ * @brief Write a single stacked bar graph of test results over time
+ * 
+ * @param filename 
+ * @param file 
+ * @param groupNumber 
+ * @param groupName 
+ */
 void ChartWriter::writeTestsGraph(std::string filename, std::ofstream *file, int groupNumber, std::string groupName)
 {
 	if (file != NULL)

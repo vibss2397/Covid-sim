@@ -5,16 +5,19 @@
 #include <functional>
 #include "Graph.hpp"
 
+
 Graph::Graph(std::vector<Person*>& worldPopulation, float p) {
     connectionProb = p;
     population = std::ref(worldPopulation);
     numNodes = population.size();
-    initialize_connection_graph();    
+    initialize_connection_graph();
 }
 
-// Use random graph algorithm: each edge is decided with probability p
-// Considered Babarasi-Albert model to satisfy Power Law (https://en.wikipedia.org/wiki/Scale-free_network), but end up choosing
-// random graph for simplicity and uniform degree
+/**
+ * @brief Use random graph algorithm: each edge is decided with probability p
+ * Considered Babarasi-Albert model to satisfy Power Law (https://en.wikipedia.org/wiki/Scale-free_network), but end up choosing
+ * random graph for simplicity and uniform degree
+ */
 void Graph::initialize_connection_graph() {
     for(int i=0;i<numNodes;i++){
         std::unordered_map<int, float> temp;
@@ -69,10 +72,11 @@ void Graph::unquarantine(int nodeId) {
     }
 }
 
-void Graph::vary_connection_strength() {
-    // TODO: change the connection strength based on some algo?
-}
-
+/**
+ * @brief Calculate a new link stength according to the power law distribution
+ * 
+ * @return float 
+ */
 float Graph::new_link_strength() {
     // power law distribution range x0 = 0.1, x1 = 1, n = -2.5
     float x0 = 0.1;
@@ -88,6 +92,11 @@ bool Graph::construct_link_successful() {
     return temp<connectionProb;
 }
 
+/**
+ * @brief Generate a random number uniformly 
+ * 
+ * @return float 
+ */
 float Graph::uniform() {
     return (float) rand() / RAND_MAX;
 }

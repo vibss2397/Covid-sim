@@ -3,8 +3,12 @@
 #include <iostream>
 #include "TestingDatabase.h"
 
-/* A class which represents a database of test results. */
-
+/**
+ * @brief Construct a new Testing Database:: Testing Database object, A class which represents a database of test results.
+ * 
+ * @param n_nodes 
+ * @param m_tests 
+ */
 TestingDatabase::TestingDatabase(int n_nodes, int m_tests):
 n_nodes(n_nodes), m_tests(m_tests)
 {
