@@ -33,12 +33,11 @@ void Graph::initialize_connection_graph() {
 // make sure it doesn't copy
 std::vector<std::pair<Person, float>> Graph::get_neighbors(int nodeId) {
     std::cout << "Made it to the start of get_neighbors()" << std::endl;
-    std::unordered_map<int, float> nodeMap = connectionGraph[nodeId];
+    std::unordered_map<int, float>& nodeMap = connectionGraph[nodeId];
     std::cout << "Checkpoint 1" << std::endl;
     // >>> The next 2 lines aren't working! nodeMap.size() either crashes OR returns a junk number... something isn't being allocated / accessed correctly here <<<
     //std::cout << nodeMap.size() << std::endl;
-    std::vector<std::pair<Person, float>> neighbors;
-    neighbors.reserve(nodeMap.size());
+    std::vector<std::pair<Person, float>> neighbors(nodeMap.size());
     std::cout << "Checkpoint 2" << std::endl;
     for (auto keyPair : nodeMap) {
         if (keyPair.second > 0) {
