@@ -8,14 +8,16 @@
 #include "ChartWriter.hpp"
 
 const int NUM_PERSONS = 160; //total people number
-const float SIM_DURATION = 60.0f; //how many units of time do we run the simulation for?
+const float SIM_DURATION = 120.0f; //how many units of time do we run the simulation for?
 const float SIM_RATE = 1.0f; //length of time between each time frame of the simulation
-const float CONNECTION_PROB = 0.8f; //the connection probability
+const float CONNECTION_PROB = 0.15f; //the connection probability
 const int MASK_PROB = 50; //percentage of how many people wear mask on campus
 const float PERCENT_INFECTED_AT_START = 4;
 
 int main(int argc, char* argv[])
 {
+
+
     std::vector<Person*> people(NUM_PERSONS);
     // we should still working on the graph class
     int numTestsPerPerson = SIM_DURATION/SIM_RATE;
@@ -27,7 +29,12 @@ int main(int argc, char* argv[])
     int i;
     for (i = 0; i < NUM_PERSONS; i++)
     {
-        Person *person = new Person(i, -1, -1, (rand() % 100) < PERCENT_INFECTED_AT_START);
+        Person *person = new Person(i);
+        bool isInfected = (rand() % 100) < PERCENT_INFECTED_AT_START;
+        if(isInfected){
+           person->covid_state[0] = 1;
+           person->covid_state[1] = 1;
+        }
         people[i] = person;
         bool TrueFalse = (rand() % 100) < MASK_PROB;
         if(TrueFalse){
