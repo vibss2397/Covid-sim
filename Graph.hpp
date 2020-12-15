@@ -7,7 +7,7 @@
 
 class Graph {
     public:
-        std::unordered_map<int, float>* connectionGraph; // connections and strength between people
+        std::vector<std::unordered_map<int, float>> connectionGraph; // connections and strength between people
         int numNodes;
         float connectionProb;
         std::vector<Person> population;

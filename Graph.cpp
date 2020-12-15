@@ -6,33 +6,41 @@
 #include "Graph.hpp"
 
 Graph::Graph(std::vector<Person>& worldPopulation, float p) {
-    numNodes = population.size();
-    connectionProb = p;
     population = std::ref(worldPopulation);
-    initialize_connection_graph();
+    numNodes = population.size();
+    initialize_connection_graph();    
 }
 
 // Use random graph algorithm: each edge is decided with probability p
 // Considered Babarasi-Albert model to satisfy Power Law (https://en.wikipedia.org/wiki/Scale-free_network), but end up choosing
 // random graph for simplicity and uniform degree
 void Graph::initialize_connection_graph() {
-    std::unordered_map<int, float> connectionGraph[numNodes];
-    
+    for(int i=0;i<numNodes;i++){
+        std::unordered_map<int, float> temp;
+        connectionGraph.emplace_back(temp);
+    }
     for (int firstNode = 0; firstNode < numNodes; firstNode++) {
         for (int secondNode = firstNode + 1; secondNode < numNodes; secondNode++) {
             if (construct_link_successful()) {
                 float linkStrength = new_link_strength();
-                connectionGraph[firstNode][secondNode] = linkStrength;
-                connectionGraph[secondNode][firstNode] = linkStrength;
+                // std::cout<<firstNode<<" "<<secondNode<<" "<<linkStrength<<std::endl;
+                connectionGraph[firstNode].insert({secondNode, linkStrength});
+                connectionGraph[secondNode].insert({firstNode, linkStrength});
             }
         }
     }
+
 }
 
 // vector shouldn't be copied when returning here via RVO
 // make sure it doesn't copy
 std::vector<std::pair<Person, float>> Graph::get_neighbors(int nodeId) {
     std::cout << "Made it to the start of get_neighbors()" << std::endl;
+    // std::cout<<connectionGraph[nodeId].size();
+    // for (std::pair<int, float> element : connectionGraph[nodeId])
+    // {
+    //     std::cout << element.first << " :: " << element.second << std::endl;
+    // }
     std::unordered_map<int, float>& nodeMap = connectionGraph[nodeId];
     std::cout << "Checkpoint 1" << std::endl;
     // >>> The next 2 lines aren't working! nodeMap.size() either crashes OR returns a junk number... something isn't being allocated / accessed correctly here <<<
