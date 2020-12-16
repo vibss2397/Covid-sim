@@ -5,9 +5,14 @@
 #include <vector>
 #include "Person.hpp"
 
+/**
+ * @brief Responsible for tracking connections between people and quarantine, generates the network of connections between people.
+ * 
+ */
 class Graph {
     public:
-        std::vector<std::unordered_map<int, float>> connectionGraph; // connections and strength between people
+        /// connections and strength between people
+        std::vector<std::unordered_map<int, float>> connectionGraph; 
         int numNodes;
         float connectionProb;
         std::vector<Person*> population;

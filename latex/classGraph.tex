@@ -1,0 +1,163 @@
+\hypertarget{classGraph}{}\doxysection{Graph Class Reference}
+\label{classGraph}\index{Graph@{Graph}}
+
+
+Responsible for tracking connections between people and quarantine, generates the network of connections between people.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGraph_a6e4288fb71dbf5163154f8de52f0d985}{Graph}} (std\+::vector$<$ \mbox{\hyperlink{classPerson}{Person}} $\ast$ $>$ \&world\+Population, float p)
+\item 
+void \mbox{\hyperlink{classGraph_a075ad8a8a64b0ef738f29054f05e22d0}{initialize\+\_\+connection\+\_\+graph}} ()
+\begin{DoxyCompactList}\small\item\em Use random graph algorithm\+: each edge is decided with probability p Considered Babarasi-\/\+Albert model to satisfy Power Law (\href{https://en.wikipedia.org/wiki/Scale-free_network}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Scale-\/free\+\_\+network}}), but end up choosing random graph for simplicity and uniform degree. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{classPerson}{Person}} $\ast$, float $>$ $>$ \mbox{\hyperlink{classGraph_a0f7d98ff826528fea3e1ba5b89ba4ec5}{get\+\_\+neighbors}} (int node\+Id)
+\item 
+void \mbox{\hyperlink{classGraph_a8f3b08fd5c5ea921b5534c44bdadb331}{quarantine}} (int node\+Id)
+\item 
+void \mbox{\hyperlink{classGraph_a25ac31c04b3a065eb59ad4181856cc82}{unquarantine}} (int node\+Id)
+\item 
+void \mbox{\hyperlink{classGraph_a8092d148289b7e18c304ae5f96af0f1e}{vary\+\_\+connection\+\_\+strength}} ()
+\item 
+float \mbox{\hyperlink{classGraph_a175c66989108aa99319590a6295dcdf8}{new\+\_\+link\+\_\+strength}} ()
+\begin{DoxyCompactList}\small\item\em Calculate a new link stength according to the power law distribution. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGraph_a196da9f19c3e3ea15dc78039962bb95f}{construct\+\_\+link\+\_\+successful}} ()
+\item 
+float \mbox{\hyperlink{classGraph_aed36468d67764e053cc3be07eaae1483}{uniform}} ()
+\begin{DoxyCompactList}\small\item\em Generate a random number uniformly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unordered\+\_\+map$<$ int, float $>$ $>$ \mbox{\hyperlink{classGraph_abd9177ecff2f15316a51d7d3e251693f}{connection\+Graph}}
+\begin{DoxyCompactList}\small\item\em connections and strength between people \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGraph_ad3db12d7f8327a6717fd161d694e43c0}{num\+Nodes}}
+\item 
+float \mbox{\hyperlink{classGraph_ad08c7c6292968b797bdce3a1f041e4ca}{connection\+Prob}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPerson}{Person}} $\ast$ $>$ \mbox{\hyperlink{classGraph_adf0d211a620437576ea5660afaa7aea0}{population}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Responsible for tracking connections between people and quarantine, generates the network of connections between people. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGraph_a6e4288fb71dbf5163154f8de52f0d985}\label{classGraph_a6e4288fb71dbf5163154f8de52f0d985}} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classPerson}{Person}} $\ast$ $>$ \&}]{world\+Population,  }\item[{float}]{p }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGraph_a196da9f19c3e3ea15dc78039962bb95f}\label{classGraph_a196da9f19c3e3ea15dc78039962bb95f}} 
+\index{Graph@{Graph}!construct\_link\_successful@{construct\_link\_successful}}
+\index{construct\_link\_successful@{construct\_link\_successful}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{construct\_link\_successful()}{construct\_link\_successful()}}
+{\footnotesize\ttfamily bool Graph\+::construct\+\_\+link\+\_\+successful (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGraph_a0f7d98ff826528fea3e1ba5b89ba4ec5}\label{classGraph_a0f7d98ff826528fea3e1ba5b89ba4ec5}} 
+\index{Graph@{Graph}!get\_neighbors@{get\_neighbors}}
+\index{get\_neighbors@{get\_neighbors}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{get\_neighbors()}{get\_neighbors()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{classPerson}{Person}} $\ast$, float $>$ $>$ Graph\+::get\+\_\+neighbors (\begin{DoxyParamCaption}\item[{int}]{node\+Id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGraph_a075ad8a8a64b0ef738f29054f05e22d0}\label{classGraph_a075ad8a8a64b0ef738f29054f05e22d0}} 
+\index{Graph@{Graph}!initialize\_connection\_graph@{initialize\_connection\_graph}}
+\index{initialize\_connection\_graph@{initialize\_connection\_graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{initialize\_connection\_graph()}{initialize\_connection\_graph()}}
+{\footnotesize\ttfamily void Graph\+::initialize\+\_\+connection\+\_\+graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Use random graph algorithm\+: each edge is decided with probability p Considered Babarasi-\/\+Albert model to satisfy Power Law (\href{https://en.wikipedia.org/wiki/Scale-free_network}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Scale-\/free\+\_\+network}}), but end up choosing random graph for simplicity and uniform degree. 
+
+\mbox{\Hypertarget{classGraph_a175c66989108aa99319590a6295dcdf8}\label{classGraph_a175c66989108aa99319590a6295dcdf8}} 
+\index{Graph@{Graph}!new\_link\_strength@{new\_link\_strength}}
+\index{new\_link\_strength@{new\_link\_strength}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{new\_link\_strength()}{new\_link\_strength()}}
+{\footnotesize\ttfamily float Graph\+::new\+\_\+link\+\_\+strength (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate a new link stength according to the power law distribution. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+power law distribution range x0 = 0.\+1, x1 = 1, n = -\/2.\+5
+
+x = \mbox{[}y $\ast$ (x1$^\wedge$(n+1) -\/ x0$^\wedge$(n+1)) + x0$^\wedge$(n+1)\mbox{]}$^\wedge$(1/(n+1)) Source\+: \href{https://mathworld.wolfram.com/RandomNumber.html}{\texttt{ https\+://mathworld.\+wolfram.\+com/\+Random\+Number.\+html}}\mbox{\Hypertarget{classGraph_a8f3b08fd5c5ea921b5534c44bdadb331}\label{classGraph_a8f3b08fd5c5ea921b5534c44bdadb331}} 
+\index{Graph@{Graph}!quarantine@{quarantine}}
+\index{quarantine@{quarantine}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{quarantine()}{quarantine()}}
+{\footnotesize\ttfamily void Graph\+::quarantine (\begin{DoxyParamCaption}\item[{int}]{node\+Id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGraph_aed36468d67764e053cc3be07eaae1483}\label{classGraph_aed36468d67764e053cc3be07eaae1483}} 
+\index{Graph@{Graph}!uniform@{uniform}}
+\index{uniform@{uniform}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{uniform()}{uniform()}}
+{\footnotesize\ttfamily float Graph\+::uniform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generate a random number uniformly. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a25ac31c04b3a065eb59ad4181856cc82}\label{classGraph_a25ac31c04b3a065eb59ad4181856cc82}} 
+\index{Graph@{Graph}!unquarantine@{unquarantine}}
+\index{unquarantine@{unquarantine}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{unquarantine()}{unquarantine()}}
+{\footnotesize\ttfamily void Graph\+::unquarantine (\begin{DoxyParamCaption}\item[{int}]{node\+Id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGraph_a8092d148289b7e18c304ae5f96af0f1e}\label{classGraph_a8092d148289b7e18c304ae5f96af0f1e}} 
+\index{Graph@{Graph}!vary\_connection\_strength@{vary\_connection\_strength}}
+\index{vary\_connection\_strength@{vary\_connection\_strength}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{vary\_connection\_strength()}{vary\_connection\_strength()}}
+{\footnotesize\ttfamily void Graph\+::vary\+\_\+connection\+\_\+strength (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classGraph_abd9177ecff2f15316a51d7d3e251693f}\label{classGraph_abd9177ecff2f15316a51d7d3e251693f}} 
+\index{Graph@{Graph}!connectionGraph@{connectionGraph}}
+\index{connectionGraph@{connectionGraph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{connectionGraph}{connectionGraph}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unordered\+\_\+map$<$int, float$>$ $>$ Graph\+::connection\+Graph}
+
+
+
+connections and strength between people 
+
+\mbox{\Hypertarget{classGraph_ad08c7c6292968b797bdce3a1f041e4ca}\label{classGraph_ad08c7c6292968b797bdce3a1f041e4ca}} 
+\index{Graph@{Graph}!connectionProb@{connectionProb}}
+\index{connectionProb@{connectionProb}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{connectionProb}{connectionProb}}
+{\footnotesize\ttfamily float Graph\+::connection\+Prob}
+
+\mbox{\Hypertarget{classGraph_ad3db12d7f8327a6717fd161d694e43c0}\label{classGraph_ad3db12d7f8327a6717fd161d694e43c0}} 
+\index{Graph@{Graph}!numNodes@{numNodes}}
+\index{numNodes@{numNodes}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{numNodes}{numNodes}}
+{\footnotesize\ttfamily int Graph\+::num\+Nodes}
+
+\mbox{\Hypertarget{classGraph_adf0d211a620437576ea5660afaa7aea0}\label{classGraph_adf0d211a620437576ea5660afaa7aea0}} 
+\index{Graph@{Graph}!population@{population}}
+\index{population@{population}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{population}{population}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classPerson}{Person}}$\ast$$>$ Graph\+::population}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Graph_8hpp}{Graph.\+hpp}}\item 
+\mbox{\hyperlink{Graph_8cpp}{Graph.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,164 @@
+\hypertarget{class_chart_writer}{}\doxysection{Chart\+Writer Class Reference}
+\label{class_chart_writer}\index{ChartWriter@{ChartWriter}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_chart_writer_a3d19a558ab60bd2e95426ddac20bcf50}\label{class_chart_writer_a3d19a558ab60bd2e95426ddac20bcf50}} 
+{\bfseries Chart\+Writer} (int num\+People)
+\item 
+\mbox{\Hypertarget{class_chart_writer_ab8a1a0d2f779e41cc280752c93a540e5}\label{class_chart_writer_ab8a1a0d2f779e41cc280752c93a540e5}} 
+void {\bfseries cleanup} ()
+\item 
+\mbox{\Hypertarget{class_chart_writer_a23640e091ef8670e2428aa693ccf749b}\label{class_chart_writer_a23640e091ef8670e2428aa693ccf749b}} 
+void {\bfseries open\+Webpage} ()
+\item 
+void \mbox{\hyperlink{class_chart_writer_a2ac1c7a3fccd920ef032b26446bce6f7}{update\+From\+Data}} (float time, std\+::vector$<$ \mbox{\hyperlink{class_person}{Person}} $\ast$ $>$ people, int num\+\_\+people, \mbox{\hyperlink{class_testing_database}{Testing\+Database}} testing\+Database)
+\begin{DoxyCompactList}\small\item\em Update the data files from a given timestamp, people array, and testing database. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_chart_writer_a9d2131042a7094bd1eb6a3dacf2b4f82}\label{class_chart_writer_a9d2131042a7094bd1eb6a3dacf2b4f82}} 
+void \mbox{\hyperlink{class_chart_writer_a9d2131042a7094bd1eb6a3dacf2b4f82}{write\+All\+Charts}} ()
+\begin{DoxyCompactList}\small\item\em Generate image files from the intermediate data files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chart_writer_a457db17135d5801243ee39766c4a3f06}{write\+Status\+Graph}} (std\+::string filename, std\+::ofstream $\ast$file, int group\+Number, std\+::string group\+Name)
+\begin{DoxyCompactList}\small\item\em Write a single line graph of infection status counts over time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chart_writer_aa926710d8444f99c88ce23abb1b92f5e}{write\+Tests\+Graph}} (std\+::string filename, std\+::ofstream $\ast$file, int group\+Number, std\+::string group\+Name)
+\begin{DoxyCompactList}\small\item\em Write a single stacked bar graph of test results over time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_chart_writer_a0000344a1994b656b9a351e5b4b30d5d}\label{class_chart_writer_a0000344a1994b656b9a351e5b4b30d5d}} 
+const int {\bfseries C\+H\+A\+R\+T\+\_\+\+W\+I\+D\+TH} = 1200
+\item 
+\mbox{\Hypertarget{class_chart_writer_a6024566a7284778ce0ffd048c6a6bf33}\label{class_chart_writer_a6024566a7284778ce0ffd048c6a6bf33}} 
+const int {\bfseries C\+H\+A\+R\+T\+\_\+\+H\+E\+I\+G\+HT} = 600
+\item 
+const std\+::string {\bfseries C\+H\+A\+R\+T\+\_\+\+U\+N\+I\+V\+E\+R\+I\+S\+T\+Y\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+N\+I\+C\+E\+\_\+\+N\+A\+M\+ES} \mbox{[}5\mbox{]}
+\item 
+const std\+::string {\bfseries C\+H\+A\+R\+T\+\_\+\+U\+N\+I\+V\+E\+R\+S\+I\+T\+Y\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+H\+O\+R\+T\+\_\+\+N\+A\+M\+ES} \mbox{[}6\mbox{]}
+\item 
+\mbox{\Hypertarget{class_chart_writer_abdbe2b415abc7c827e830430168ae341}\label{class_chart_writer_abdbe2b415abc7c827e830430168ae341}} 
+int {\bfseries healthy\+Counts} \mbox{[}5\mbox{]}
+\item 
+\mbox{\Hypertarget{class_chart_writer_a11325712a101c93a24e6d09bc4426756}\label{class_chart_writer_a11325712a101c93a24e6d09bc4426756}} 
+int {\bfseries infected\+Counts} \mbox{[}5\mbox{]}
+\item 
+\mbox{\Hypertarget{class_chart_writer_a354e2b434b0c9607c9850d85f33b409d}\label{class_chart_writer_a354e2b434b0c9607c9850d85f33b409d}} 
+int {\bfseries recovered\+Counts} \mbox{[}5\mbox{]}
+\item 
+\mbox{\Hypertarget{class_chart_writer_a6adb79c620ccf3bb27955d8620353604}\label{class_chart_writer_a6adb79c620ccf3bb27955d8620353604}} 
+int {\bfseries dead\+Counts} \mbox{[}5\mbox{]}
+\item 
+\mbox{\Hypertarget{class_chart_writer_a7b755c07178838ca963edaf37203027a}\label{class_chart_writer_a7b755c07178838ca963edaf37203027a}} 
+int {\bfseries positive\+Test\+Counts} \mbox{[}5\mbox{]}
+\item 
+\mbox{\Hypertarget{class_chart_writer_ab735b8791428308744c396e1d0928d99}\label{class_chart_writer_ab735b8791428308744c396e1d0928d99}} 
+int {\bfseries negative\+Test\+Counts} \mbox{[}5\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_chart_writer_a2ac1c7a3fccd920ef032b26446bce6f7}\label{class_chart_writer_a2ac1c7a3fccd920ef032b26446bce6f7}} 
+\index{ChartWriter@{ChartWriter}!updateFromData@{updateFromData}}
+\index{updateFromData@{updateFromData}!ChartWriter@{ChartWriter}}
+\doxysubsubsection{\texorpdfstring{updateFromData()}{updateFromData()}}
+{\footnotesize\ttfamily void Chart\+Writer\+::update\+From\+Data (\begin{DoxyParamCaption}\item[{float}]{time,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_person}{Person}} $\ast$ $>$}]{people,  }\item[{int}]{num\+\_\+people,  }\item[{\mbox{\hyperlink{class_testing_database}{Testing\+Database}}}]{testing\+Database }\end{DoxyParamCaption})}
+
+
+
+Update the data files from a given timestamp, people array, and testing database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & \\
+\hline
+{\em people} & \\
+\hline
+{\em num\+\_\+people} & \\
+\hline
+{\em testing\+Database} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_chart_writer_a457db17135d5801243ee39766c4a3f06}\label{class_chart_writer_a457db17135d5801243ee39766c4a3f06}} 
+\index{ChartWriter@{ChartWriter}!writeStatusGraph@{writeStatusGraph}}
+\index{writeStatusGraph@{writeStatusGraph}!ChartWriter@{ChartWriter}}
+\doxysubsubsection{\texorpdfstring{writeStatusGraph()}{writeStatusGraph()}}
+{\footnotesize\ttfamily void Chart\+Writer\+::write\+Status\+Graph (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{std\+::ofstream $\ast$}]{file,  }\item[{int}]{group\+Number,  }\item[{std\+::string}]{group\+Name }\end{DoxyParamCaption})}
+
+
+
+Write a single line graph of infection status counts over time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+{\em file} & \\
+\hline
+{\em group\+Number} & \\
+\hline
+{\em group\+Name} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_chart_writer_aa926710d8444f99c88ce23abb1b92f5e}\label{class_chart_writer_aa926710d8444f99c88ce23abb1b92f5e}} 
+\index{ChartWriter@{ChartWriter}!writeTestsGraph@{writeTestsGraph}}
+\index{writeTestsGraph@{writeTestsGraph}!ChartWriter@{ChartWriter}}
+\doxysubsubsection{\texorpdfstring{writeTestsGraph()}{writeTestsGraph()}}
+{\footnotesize\ttfamily void Chart\+Writer\+::write\+Tests\+Graph (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{std\+::ofstream $\ast$}]{file,  }\item[{int}]{group\+Number,  }\item[{std\+::string}]{group\+Name }\end{DoxyParamCaption})}
+
+
+
+Write a single stacked bar graph of test results over time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+{\em file} & \\
+\hline
+{\em group\+Number} & \\
+\hline
+{\em group\+Name} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_chart_writer_a69684817a9cfd024e987432cc6a6283d}\label{class_chart_writer_a69684817a9cfd024e987432cc6a6283d}} 
+\index{ChartWriter@{ChartWriter}!CHART\_UNIVERISTY\_STATUS\_NICE\_NAMES@{CHART\_UNIVERISTY\_STATUS\_NICE\_NAMES}}
+\index{CHART\_UNIVERISTY\_STATUS\_NICE\_NAMES@{CHART\_UNIVERISTY\_STATUS\_NICE\_NAMES}!ChartWriter@{ChartWriter}}
+\doxysubsubsection{\texorpdfstring{CHART\_UNIVERISTY\_STATUS\_NICE\_NAMES}{CHART\_UNIVERISTY\_STATUS\_NICE\_NAMES}}
+{\footnotesize\ttfamily const std\+::string Chart\+Writer\+::\+C\+H\+A\+R\+T\+\_\+\+U\+N\+I\+V\+E\+R\+I\+S\+T\+Y\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+N\+I\+C\+E\+\_\+\+N\+A\+M\+ES\mbox{[}5\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}Undergraduate Students"{}}),}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}Graduate Students"{}}),}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}Faculty"{}}),}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}Staff"{}}),}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{        \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_chart_writer_a582beff3f159e70cfed9b3e341645bcb}\label{class_chart_writer_a582beff3f159e70cfed9b3e341645bcb}} 
+\index{ChartWriter@{ChartWriter}!CHART\_UNIVERSITY\_STATUS\_SHORT\_NAMES@{CHART\_UNIVERSITY\_STATUS\_SHORT\_NAMES}}
+\index{CHART\_UNIVERSITY\_STATUS\_SHORT\_NAMES@{CHART\_UNIVERSITY\_STATUS\_SHORT\_NAMES}!ChartWriter@{ChartWriter}}
+\doxysubsubsection{\texorpdfstring{CHART\_UNIVERSITY\_STATUS\_SHORT\_NAMES}{CHART\_UNIVERSITY\_STATUS\_SHORT\_NAMES}}
+{\footnotesize\ttfamily const std\+::string Chart\+Writer\+::\+C\+H\+A\+R\+T\+\_\+\+U\+N\+I\+V\+E\+R\+S\+I\+T\+Y\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+H\+O\+R\+T\+\_\+\+N\+A\+M\+ES\mbox{[}6\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}undergrads"{}}),}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}grads"{}}),}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}faculty"{}}),}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}staff"{}}),}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}all-\/combined"{}}),}
+\DoxyCodeLine{            std::string(\textcolor{stringliteral}{"{}all-\/separated"{}})}
+\DoxyCodeLine{        \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Chart\+Writer.\+hpp\item 
+Chart\+Writer.\+cpp\end{DoxyCompactItemize}

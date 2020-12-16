@@ -6,15 +6,19 @@
 
 class Graph;
 
+/**
+ * @brief Tracks the current state of any person and their health, also holds statistically relevant information with infection.
+ * 
+ */
 class Person{
 public:
     int16_t bu_id;
     int16_t age;
-    // 0: safe(potential), 1 : infected, 2 : symptomatic, 3 : quarantine, 4: recovery, -1 : dead
+    ///0: safe(potential), 1 : infected, 2 : symptomatic, 3 : quarantine, 4: recovery, -1 : dead
     int16_t covid_state[2]; 
-    // 0 : off, 1 : on
+    ///0 : off, 1 : on
     int16_t wears_mask; 
-    // 0 : undergrad, 1: grad, 2 : faculty, 3 : other staff
+    ///0 : undergrad, 1: grad, 2 : faculty, 3 : other staff
     int16_t university_status; 
     int16_t covid_counter;
     int16_t covid_mu_factor;

@@ -5,32 +5,29 @@
 
 /**
  * @brief Construct a new Testing Database:: Testing Database object, A class which represents a database of test results.
- * 
+ * Data about rapid antigen tests taken from:
+ * https://www.cdc.gov/coronavirus/2019-ncov/lab/resources/antigen-tests-guidelines.html
+ * Quote from the source:
+ * "The sensitivity of rapid antigen tests is generally lower than RT-PCR.
+ * The first antigen tests to have received FDA EUAs demonstrate sensitivity
+ * ranging from 84.0%-97.6% compared to RT-PCR. ...
+ * The specificity of rapid antigen tests is generally as high as RT-PCR –
+ * the first antigen tests that have received FDA EUAs have reported
+ * specificity of 100% – which means that false positive results are unlikely."
  * @param n_nodes 
  * @param m_tests 
  */
 TestingDatabase::TestingDatabase(int n_nodes, int m_tests):
 n_nodes(n_nodes), m_tests(m_tests)
 {
-    // Data about rapid antigen tests taken from:
-    // https://www.cdc.gov/coronavirus/2019-ncov/lab/resources/antigen-tests-guidelines.html
-    // Quote from the source:
-    // "The sensitivity of rapid antigen tests is generally lower than RT-PCR.
-    // The first antigen tests to have received FDA EUAs demonstrate sensitivity
-    // ranging from 84.0%-97.6% compared to RT-PCR. ...
-    // The specificity of rapid antigen tests is generally as high as RT-PCR –
-    // the first antigen tests that have received FDA EUAs have reported
-    // specificity of 100% – which means that false positive results are unlikely."
-
-    // How likely people who are positive test positive.
+    /// How likely people who are positive test positive.
     symptomatic_sensitivity = 0.84;
 
-    // How likely people who are negative test negative.
+    /// How likely people who are negative test negative.
     specificity = 1.00;
 
-    // How likely people who are infected, but not yet symptomatic, test positive.
+    /// How likely people who are infected, but not yet symptomatic, test positive.
     asymptomatic_sensitivity = 0.50;
-
 
     // Initialize the results vector to hold n_nodes vectors, each
     // with m_tests booleans.
@@ -45,9 +42,11 @@ TestingDatabase::~TestingDatabase()
 {
 }
 
-/* This function returns a test result for a given person.
- * It's called by the Simulator instance and is given the node's state:
- * 0: safe(potential), 1 : infected, 2 : symptomatic, 3 : quarantine, 4: recovery, -1 : dead */
+/**
+ * @brief It's called by the Simulator instance and is given the node's state:
+ * 0: safe(potential), 1 : infected, 2 : symptomatic, 3 : quarantine, 4: recovery, -1 : dead
+ * 
+ */
 bool TestingDatabase::test_node(int bu_id, int person_state)
 {
     bool result;
@@ -88,10 +87,12 @@ bool TestingDatabase::test_node(int bu_id, int person_state)
     this->test_num[bu_id]++;
 
     return result;
-
 }
 
-/* Helper function that prints out the results vectors for each node */
+/**
+ * @brief Helper function that prints out the results vectors for each node
+ * 
+ */
 void TestingDatabase::print_results()
 {
      for (int i = 0; i < n_nodes; i++)
