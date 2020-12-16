@@ -8,11 +8,11 @@
 #include "ChartWriter.hpp"
 
 const int NUM_PERSONS = 1000; //total people number
-const float SIM_DURATION = 200.0f; //how many units of time do we run the simulation for?
+const float SIM_DURATION = 100.0f; //how many units of time do we run the simulation for?
 const float SIM_RATE = 1.0f; //length of time between each time frame of the simulation
-const float CONNECTION_PROB = 0.005f; //the connection probability
+const float CONNECTION_PROB = 0.05f; //the connection probability
 const int MASK_PROB = 85; //percentage of how many people wear mask on campus
-const float PERCENT_INFECTED_AT_START = 1;
+const float PERCENT_INFECTED_AT_START = 0.1f;
 
 int main(int argc, char* argv[])
 {
@@ -27,7 +27,8 @@ int main(int argc, char* argv[])
     for (i = 0; i < NUM_PERSONS; i++)
     {
         Person *person = new Person(i);
-        bool isInfected = (rand() % 100) < PERCENT_INFECTED_AT_START;
+        float temp = ((float)rand()*100)/(float) RAND_MAX;
+        bool isInfected =  temp< PERCENT_INFECTED_AT_START;
         if(isInfected){
            person->covid_state[0] = 1;
            person->covid_state[1] = 1;

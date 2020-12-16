@@ -165,25 +165,26 @@ void Person::update_covid_state(){
 void Person::calculate_covid(Graph graph_instance){ 
     std::vector<std::pair<Person*, float>> neighbors = graph_instance.get_neighbors(bu_id);
     
-    float weighted_not_covid_probs = 1.0;
+    float probs_not_getting_covid = 1.0;
 
     float weighted_probs = 1.0;
     for(auto neighbor:neighbors){
-        float not_covid_factor;
+        float covid_factor;
         if(neighbor.first->covid_state[0]==0||neighbor.first->covid_state[0]==3||neighbor.first->covid_state[0]==4||neighbor.first->covid_state[0]==-1){
-            not_covid_factor = 1; // not covid factor is 1 for quarantine, recovered and safe
+            covid_factor = 0; // covid factor is 0 for quarantine, recovered and safe
         }else if(neighbor.first->covid_state[0]==1){
-            not_covid_factor = 0.5; // 0.5 for when person is not symptomatic but infected(low amount of viral load).
+            covid_factor = 0.3; // 0.3 for when person is not symptomatic but infected(low amount of viral load).
         }else{
-            not_covid_factor = 0.1; // 0.1(low value) for when person is symptomatic (will bring the chance of not having covid down).
+            covid_factor = 1; // 1 for when person is symptomatic.
         }
-        float mask_factor = (neighbor.first->wears_mask==true&&(not_covid_factor==0.5 || not_covid_factor==0.1))?0.65:1.0;
-        weighted_not_covid_probs*=neighbor.second*mask_factor*not_covid_factor;
+        float mask_factor = (neighbor.first->wears_mask==true&&(covid_factor==0.3 || covid_factor==1))?0.35:1.0;
+        float pr_getting_covid_from_neighbor = neighbor.second*(mask_factor*covid_factor);
+        probs_not_getting_covid*=(1 - pr_getting_covid_from_neighbor);
     }
-    float weighted_covid_probs = 1 - weighted_not_covid_probs;
-    
+    float probs_getting_covid = 1 - probs_not_getting_covid;
     float rand_covid_die = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-    if(weighted_covid_probs<=rand_covid_die && covid_state[0] == 0){
+    // std::cout<<bu_id<<"::"<<rand_covid_die<<"::"<<probs_getting_covid<<std::endl;
+    if(rand_covid_die<=probs_getting_covid && covid_state[0] == 0){
         // the person gets infected with a chance of product of weighted_probs
         covid_state[1] = 1; 
         covid_counter = 1;
