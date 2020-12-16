@@ -115,6 +115,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a205916de88364f0eddb0d3f704c828bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="classTestingDatabase.html#a205916de88364f0eddb0d3f704c828bb">More...</a><br /></td></tr>
 <tr class="separator:a205916de88364f0eddb0d3f704c828bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d799e529662d93bb848f455f0e6ab15"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestingDatabase.html#a7d799e529662d93bb848f455f0e6ab15">test_node</a> (int bu_id, int person_state)</td></tr>
+<tr class="memdesc:a7d799e529662d93bb848f455f0e6ab15"><td class="mdescLeft">&#160;</td><td class="mdescRight">It's called by the Simulator instance and is given the node's state: 0: safe(potential), 1 : infected, 2 : symptomatic, 3 : quarantine, 4: recovery, -1 : dead.  <a href="classTestingDatabase.html#a7d799e529662d93bb848f455f0e6ab15">More...</a><br /></td></tr>
 <tr class="separator:a7d799e529662d93bb848f455f0e6ab15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb7f2c0598147e7e2055a1dd4348a6be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestingDatabase.html#aeb7f2c0598147e7e2055a1dd4348a6be">print_results</a> ()</td></tr>
 <tr class="memdesc:aeb7f2c0598147e7e2055a1dd4348a6be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to check that the results vectors are being updated.  <a href="classTestingDatabase.html#aeb7f2c0598147e7e2055a1dd4348a6be">More...</a><br /></td></tr>
@@ -122,9 +123,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a2811d00c840c48095db4bde48cf97f1e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestingDatabase.html#a2811d00c840c48095db4bde48cf97f1e">results</a></td></tr>
-<tr class="memdesc:a2811d00c840c48095db4bde48cf97f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of list of booleans representing tests results for each node.  <a href="classTestingDatabase.html#a2811d00c840c48095db4bde48cf97f1e">More...</a><br /></td></tr>
-<tr class="separator:a2811d00c840c48095db4bde48cf97f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a1fd6d2a47ccbc67a6bf07c8ad6fb8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; bool &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestingDatabase.html#a53a1fd6d2a47ccbc67a6bf07c8ad6fb8">results</a></td></tr>
+<tr class="memdesc:a53a1fd6d2a47ccbc67a6bf07c8ad6fb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of list of booleans representing tests results for each node.  <a href="classTestingDatabase.html#a53a1fd6d2a47ccbc67a6bf07c8ad6fb8">More...</a><br /></td></tr>
+<tr class="separator:a53a1fd6d2a47ccbc67a6bf07c8ad6fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c934b9aacf2d9f30cf0c54e362855af"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTestingDatabase.html#a4c934b9aacf2d9f30cf0c54e362855af">test_num</a></td></tr>
 <tr class="separator:a4c934b9aacf2d9f30cf0c54e362855af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -158,7 +159,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructor. </p>
-<p>Construct a new Testing Database:: Testing Database object, A class which represents a database of test results.</p>
+<p>Construct a new Testing Database:: Testing Database object, A class which represents a database of test results. Data about rapid antigen tests taken from: <a href="https://www.cdc.gov/coronavirus/2019-ncov/lab/resources/antigen-tests-guidelines.html">https://www.cdc.gov/coronavirus/2019-ncov/lab/resources/antigen-tests-guidelines.html</a> Quote from the source: "The sensitivity of rapid antigen tests is generally lower than RT-PCR. The first antigen tests to have received FDA EUAs demonstrate sensitivity ranging from 84.0%-97.6% compared to RT-PCR. ... The specificity of rapid antigen tests is generally as high as RT-PCR – the first antigen tests that have received FDA EUAs have reported specificity of 100% – which means that false positive results are unlikely.".</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n_nodes</td><td></td></tr>
@@ -166,6 +167,9 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<p>How likely people who are positive test positive.</p>
+<p>How likely people who are negative test negative.</p>
+<p>How likely people who are infected, but not yet symptomatic, test positive.</p>
 
 </div>
 </div>
@@ -205,6 +209,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Helper function to check that the results vectors are being updated. </p>
+<p>Helper function that prints out the results vectors for each node. </p>
 
 </div>
 </div>
@@ -233,19 +238,21 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>It's called by the Simulator instance and is given the node's state: 0: safe(potential), 1 : infected, 2 : symptomatic, 3 : quarantine, 4: recovery, -1 : dead. </p>
 <p>Function called by the Simulator class to run tests on all nodes void run_tests(int iteration); </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a2811d00c840c48095db4bde48cf97f1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2811d00c840c48095db4bde48cf97f1e">&#9670;&nbsp;</a></span>results</h2>
+<a id="a53a1fd6d2a47ccbc67a6bf07c8ad6fb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53a1fd6d2a47ccbc67a6bf07c8ad6fb8">&#9670;&nbsp;</a></span>results</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::vector&lt;bool&gt; &gt; TestingDatabase::results</td>
+          <td class="memname">std::vector&lt;std::vector&lt;bool&gt; &gt; TestingDatabase::results</td>
         </tr>
       </table>
 </div><div class="memdoc">

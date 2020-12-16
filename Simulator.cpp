@@ -7,11 +7,16 @@
 #include "Graph.hpp"
 #include "ChartWriter.hpp"
 
-const int NUM_PERSONS = 1000; //total people number
-const float SIM_DURATION = 200.0f; //how many units of time do we run the simulation for?
-const float SIM_RATE = 1.0f; //length of time between each time frame of the simulation
-const float CONNECTION_PROB = 0.005f; //the connection probability
-const int MASK_PROB = 85; //percentage of how many people wear mask on campus
+///total people number
+const int NUM_PERSONS = 1000; 
+///how many units of time do we run the simulation for?
+const float SIM_DURATION = 200.0f; 
+///length of time between each time frame of the simulation
+const float SIM_RATE = 1.0f; 
+///the connection probability
+const float CONNECTION_PROB = 0.005f; 
+///percentage of how many people wear mask on campus
+const int MASK_PROB = 85; 
 const float PERCENT_INFECTED_AT_START = 1;
 
 int main(int argc, char* argv[])
@@ -36,7 +41,6 @@ int main(int argc, char* argv[])
         bool TrueFalse = (rand() % 100) < MASK_PROB;
         if(TrueFalse){
             person->set_mask();
-            //printf("person id = %d mask = %d\n",person.bu_id, person.wears_mask);
         }
     }
 

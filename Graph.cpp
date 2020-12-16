@@ -36,8 +36,6 @@ void Graph::initialize_connection_graph() {
 
 }
 
-/// vector shouldn't be copied when returning here via RVO
-/// make sure it doesn't copy
 std::vector<std::pair<Person*, float>> Graph::get_neighbors(int nodeId) {
     std::unordered_map<int, float>& nodeMap = connectionGraph[nodeId];
     

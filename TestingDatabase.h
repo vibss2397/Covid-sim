@@ -33,7 +33,7 @@ public:
     void print_results();
 
     ///List of list of booleans representing tests results for each node
-    std::vector< std::vector<bool> > results;
+    std::vector<std::vector<bool>> results;
 
     ///List of ints representing which index to store a Person's next test
     ///at within the results matrix. I did this to avoid using linked lists
