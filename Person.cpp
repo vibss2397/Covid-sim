@@ -179,16 +179,13 @@ void Person::calculate_covid(Graph graph_instance){
         }
         float mask_factor = (neighbor.first->wears_mask==true&&(covid_factor==0.3 || covid_factor==1))?0.2:1.0;
         float pr_getting_covid_from_neighbor = neighbor.second*(mask_factor*covid_factor);
-        std::cout<<neighbor.second<<"   "<<mask_factor*covid_factor<<std::endl;
 
         probs_not_getting_covid*=(1 - pr_getting_covid_from_neighbor);
         
     }
     float probs_getting_covid = 1 - probs_not_getting_covid;
     float rand_covid_die = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-    std::cout<<bu_id<<"  "<<probs_getting_covid<<"  "<<rand_covid_die<<std::endl;
     if(rand_covid_die<=probs_getting_covid && covid_state[0] == 0){
-        std::cout<<bu_id<<" got infected"<<std::endl;
         covid_state[1] = 1; 
         covid_counter = 1;
     }
