@@ -8,7 +8,7 @@
 #include "ChartWriter.hpp"
 
 const int NUM_PERSONS = 1000; //total people number
-const float SIM_DURATION = 100.0f; //how many units of time do we run the simulation for?
+const float SIM_DURATION = 12.0f; //how many units of time do we run the simulation for?
 const float SIM_RATE = 1.0f; //length of time between each time frame of the simulation
 const float CONNECTION_PROB = 0.005f; //the connection probability
 const int MASK_PROB = 85; //percentage of how many people wear mask on campus
