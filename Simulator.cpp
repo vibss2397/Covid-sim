@@ -12,17 +12,17 @@ const float SIM_DURATION = 12.0f; //how many units of time do we run the simulat
 const float SIM_RATE = 1.0f; //length of time between each time frame of the simulation
 const float CONNECTION_PROB = 0.005f; //the connection probability
 const int MASK_PROB = 85; //percentage of how many people wear mask on campus
-const float PERCENT_INFECTED_AT_START = 0.1f;
+const float PERCENT_INFECTED_AT_START = 0.1f; //percentatge of how may people are infected at start
 
 int main(int argc, char* argv[])
 {
-    std::vector<Person*> people(NUM_PERSONS);
-    // we should still working on the graph class
+    std::vector<Person*> people(NUM_PERSONS);//initialize a people array
     int numTestsPerPerson = SIM_DURATION/SIM_RATE;
     TestingDatabase tb = TestingDatabase(NUM_PERSONS, numTestsPerPerson);
-	ChartWriter chartWriter(NUM_PERSONS);
+	ChartWriter chartWriter(NUM_PERSONS);//for output
     
-    // Figure out who wears masks and who doesn’t
+    // Figure out one person is infected/safe or mask on/off
+    //comment: this can't do in parallel since we want to ensure the percentage
     int i;
     for (i = 0; i < NUM_PERSONS; i++)
     {
@@ -39,10 +39,10 @@ int main(int argc, char* argv[])
             person->set_mask();
         }
     }
-
+	
+    //initialize the graph g
     Graph g = Graph(people, CONNECTION_PROB);
 
-    //#pragma omp barrier //wait until all threads are done
     float time = 0.0f; //current time
     while(time < SIM_DURATION){
         int i;
