@@ -115,29 +115,30 @@ void Person::update_covid_state(){
                 if(covid_counter >= 16 && covid_counter < 20){
                     // based on probability see if they can be killed.
                     float rand_nb = ( (float) rand() * 100) / (float) RAND_MAX;
-                    if(covid_mu_factor < 10){
-                        if(rand_nb <= 1)
+                    if(covid_mu_factor < 10){ //younger (undergrads+grads)
+                        if(rand_nb <= 0.002)
                             covid_state[1] = -1;
-                    }else if(covid_mu_factor == 10){
-                        if(rand_nb <= 2)
+                    }else if(covid_mu_factor == 10){ // age: 30 - 40
+                        if(rand_nb <= 0.007)
                             covid_state[1] = -1;
-                    }else if(covid_mu_factor == 11){
-                        if(rand_nb <= 5)
+                    }else if(covid_mu_factor == 11){ // age: 40 -50
+                        if(rand_nb <= 0.02)
                             covid_state[1] = -1;
-                    }else if(covid_mu_factor == 12){
-                        if(rand_nb <= 12)
+                    }else if(covid_mu_factor == 12){ // age: 50 - 60
+                        if(rand_nb <= 0.05)
                             covid_state[1] = -1;
-                    }else if(covid_mu_factor == 13){
-                        if(rand_nb <= 20)
+                    }else if(covid_mu_factor == 13){ // age: 60 - 70
+                        if(rand_nb <= 0.11)
                             covid_state[1] = -1;
-                    }else if(covid_mu_factor == 14){
-                        if(rand_nb <= 30)
+                    }else if(covid_mu_factor == 14){ // age: 70 - 80
+                        if(rand_nb <= 0.5)
                             covid_state[1] = -1;
                     }
 
                 }else if(covid_counter >= 20){
-                    // Kill high risk group and recover everyone else.
-                    if(covid_mu_factor >= 13){
+                    //age: 70 & above have a 40% chance of dying here and recover everyone else.
+                    float rand_nb = ( (float) rand()) / (float) RAND_MAX;
+                    if(covid_mu_factor >= 14 && rand_nb<0.4){ 
                         covid_state[1] = -1;
                     }else{
                         covid_state[1] = 4; 
@@ -158,7 +159,7 @@ void Person::update_covid_state(){
 /**
  * @brief called at the end of each timestep(after update_covid_step()). 
  * uses factors such as : neighbors, mask_on/mask_off etc for calculating if a person has covid or not.
- * Data for figuring out how much do masks reduce transmission : https://www.ucdavis.edu/coronavirus/news/your-mask-cuts-own-risk-65-percent/
+ * Data for figuring out how much do masks reduce transmission(reduce 50-70%) : https://www.cdc.gov/coronavirus/2019-ncov/more/masking-science-sars-cov2.html
  * 
  * @param graph_instance 
  */
@@ -167,25 +168,27 @@ void Person::calculate_covid(Graph graph_instance){
     
     float probs_not_getting_covid = 1.0;
 
-    float weighted_probs = 1.0;
     for(auto neighbor:neighbors){
         float covid_factor;
-        if(neighbor.first->covid_state[0]==0||neighbor.first->covid_state[0]==3||neighbor.first->covid_state[0]==4||neighbor.first->covid_state[0]==-1){
-            covid_factor = 0; // covid factor is 0 for quarantine, recovered and safe
+        if(neighbor.first->covid_state[0] != 1 && neighbor.first->covid_state[0] != 2){
+            covid_factor = 0; // covid factor is 0 for quarantine, recovered, dead and safe
         }else if(neighbor.first->covid_state[0]==1){
             covid_factor = 0.3; // 0.3 for when person is not symptomatic but infected(low amount of viral load).
         }else{
             covid_factor = 1; // 1 for when person is symptomatic.
         }
-        float mask_factor = (neighbor.first->wears_mask==true&&(covid_factor==0.3 || covid_factor==1))?0.35:1.0;
+        float mask_factor = (neighbor.first->wears_mask==true&&(covid_factor==0.3 || covid_factor==1))?0.2:1.0;
         float pr_getting_covid_from_neighbor = neighbor.second*(mask_factor*covid_factor);
+        std::cout<<neighbor.second<<"   "<<mask_factor*covid_factor<<std::endl;
+
         probs_not_getting_covid*=(1 - pr_getting_covid_from_neighbor);
+        
     }
     float probs_getting_covid = 1 - probs_not_getting_covid;
     float rand_covid_die = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-    // std::cout<<bu_id<<"::"<<rand_covid_die<<"::"<<probs_getting_covid<<std::endl;
+    std::cout<<bu_id<<"  "<<probs_getting_covid<<"  "<<rand_covid_die<<std::endl;
     if(rand_covid_die<=probs_getting_covid && covid_state[0] == 0){
-        // the person gets infected with a chance of product of weighted_probs
+        std::cout<<bu_id<<" got infected"<<std::endl;
         covid_state[1] = 1; 
         covid_counter = 1;
     }
